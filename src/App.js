@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import "./scss/App.scss";
 
+import styled from "styled-components";
+
+const Headers = styled.h1`
+	color: #fbfe56;
+`;
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="App">
+			<Headers>OMO main 입니다.</Headers>
+		</div>
+	);
 }
 
 export default App;
