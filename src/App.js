@@ -1,14 +1,15 @@
-import "./scss/App.scss";
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
+import Main from "./pages/Main";
 
-import styled from "styled-components";
+import "./scss/style.scss";
 
-const Headers = styled.h1`
-	color: #fbfe56;
-`;
 function App() {
 	return (
 		<div className="App">
-			<Headers>OMO main 입니다.</Headers>
+			<Routes>
+				<Route path="/" element={<Main />} />
+			</Routes>
 		</div>
 	);
 }
