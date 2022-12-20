@@ -33,7 +33,7 @@ $mobile: 768px;
 */
 
 body {
-	background: $white;
+  background: $white;
 }
 @import "reset";
 
@@ -42,3 +42,4 @@ body {
 
 // pages
 @import "./pages/main";
+@import "./pages/board";
