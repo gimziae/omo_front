@@ -1,9 +1,23 @@
 header {
-    border: 5px solid red;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
     padding: 2em 6em;
     margin: 0 auto;
+    .wrap {
+        border: 1px solid red;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-    img {
-        width: 100px;
+        .logo {
+            width: 100px;
+        }
+        path {
+            width: 30px;
+        }
+        .user {
+            font-size: 25px;
+            color: #c7c7c7;
+            cursor: pointer;
+        }
     }
 }
