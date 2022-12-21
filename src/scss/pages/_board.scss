@@ -1,3 +1,21 @@
-.stars {
-  display: inline-block;
+.section1_container {
+  border: 1px solid red;
+  .board_form {
+    .form_stars {
+      display: inline-block;
+      &svg {
+        color: #c4c4c4;
+        cursor: pointer;
+      }
+      :hover svg {
+        color: yellow;
+      }
+      &svg:hover ~ svg {
+        color: #c4c4c4;
+      }
+      .yellow {
+        color: yellow;
+      }
+    }
+  }
 }
