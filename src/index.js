@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./redux/index";
+import "bootstrap/dist/css/bootstrap.css";
 
 // 개발자도구를 보기위한 코드
 const reduxDevTool =

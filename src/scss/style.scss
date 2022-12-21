@@ -33,12 +33,14 @@ $mobile: 768px;
 */
 
 body {
-	background: $white;
+  background: $white;
 }
 @import "reset";
 
 // components
 @import "./components/header";
+@import "./components/stars";
 
 // pages
 @import "./pages/main";
+@import "./pages/board";

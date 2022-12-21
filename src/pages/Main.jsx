@@ -6,7 +6,9 @@ export default function Main() {
 		<>
 			<Header />
 			<main>
-				<h1>메인 페이지 입니다.</h1>
+				<div className="mainWrap">
+					<h1>메인 페이지 입니다.</h1>
+				</div>
 			</main>
 		</>
 	);
