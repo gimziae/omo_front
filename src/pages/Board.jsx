@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faStar } from "@fortawesome/free-light-svg-icons";
+import Stars from "../components/Stars";
 
 export default function Board() {
+  const [clicked, setClicked] = useState([false, false, false, false, false]);
+  const array = [0, 1, 2, 3, 4];
+
+  const handleStarClick = (index) => {
+    let clickStates = [...clicked];
+    for (let i = 0; i < 5; i++) {
+      clickStates[i] = i <= index ? true : false;
+    }
+    setClicked(clickStates);
+  };
+  let score = clicked.filter(Boolean).length;
   return (
     <>
       <Header />
@@ -25,23 +35,10 @@ export default function Board() {
             <h2>image</h2>
             <input type="file" name="img" />
           </div>
-          <div className="stars">
-            <form action="">
-              <input type="checkbox" name="star1" id="star" />
-              <label className="star1"></label>
-              <input type="checkbox" name="star2" id="star" />
-              <label className="star2"></label>
-              <input type="checkbox" name="star3" id="star" />
-              <label className="star3"></label>
-              <input type="checkbox" name="star4" id="star" />
-              <label className="star4"></label>
-              <input type="checkbox" name="star5" id="star" />
-              <label className="star5"></label>
-            </form>
+          <div className="form_stars">
+            <Stars />
           </div>
           <br />
-          {/* <FontAwesomeIcon icon="fa-light fa-star" />
-          <FontAwesomeIcon icon={faStar} /> */}
           <button type="submit">submit</button>
         </form>
       </div>
