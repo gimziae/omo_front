@@ -1,7 +1,9 @@
-header {
+#header {
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
     padding: 2em 6em;
     margin: 0 auto;
+    z-index: 10;
+
     .wrap {
         border: 1px solid red;
         display: flex;
@@ -10,11 +12,12 @@ header {
 
         .logo {
             width: 100px;
+            img {
+                width: 100%;
+            }
         }
-        path {
-            width: 30px;
-        }
-        .user {
+
+        .login {
             font-size: 25px;
             color: #c7c7c7;
             cursor: pointer;

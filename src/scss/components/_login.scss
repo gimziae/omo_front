@@ -1,0 +1,63 @@
+.login-wrap {
+    padding: 5rem;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .loginBox {
+        background: #fff;
+        padding: 5rem;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #777;
+        form {
+            h1 {
+                font: normal 25px/1 "arial";
+            }
+            .register {
+                margin-bottom: 30px;
+                font: normal 16px/1 "arial";
+                a {
+                    margin-left: 10px;
+                }
+            }
+            label {
+                font: bold 16px/1 "arial";
+                color: #555;
+            }
+            input {
+                margin-bottom: 2rem;
+                padding: 10px;
+                width: 250px;
+                height: 40px;
+            }
+            .loginBtn {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                button {
+                    width: 100%;
+                    height: 40px;
+                    margin-bottom: 10px;
+                    border: none;
+                }
+                .kakaoLogin {
+                    width: 100%;
+                    height: 40px;
+                    text-decoration: none;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #f7c600;
+                    color: #3a1d1d;
+                }
+            }
+        }
+    }
+}
