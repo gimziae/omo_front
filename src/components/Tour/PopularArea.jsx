@@ -6,7 +6,9 @@ export default function PopularArea() {
       <h1>
         오늘 이곳 어때요? <span>#명동</span>
       </h1>
-      <div>{/* 이미지 */}</div>
+      <div>
+        <img src alt="명동 이미지" />
+      </div>
     </>
   );
 }
