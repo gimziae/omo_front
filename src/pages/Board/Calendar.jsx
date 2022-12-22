@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-// import { Icons } from "@iconify/react";
+import { Icon } from "@iconify/react";
 import { format, addMonths, subMonths } from "date-fns";
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from "date-fns";
 import { isSameMonth, isSameDay, addDays, parse } from "date-fns";
+import Header from "../../components/Header";
 
 const RenderHeader = ({ currentMonth, prevMonth, nextMonth }) => {
   return (
@@ -13,17 +14,17 @@ const RenderHeader = ({ currentMonth, prevMonth, nextMonth }) => {
           {format(currentMonth, "yyyy")}
         </span>
       </div>
-      {/* <div className="col col-end">
+      <div className="col col-end">
         <Icon icon="bi:arrow-left-circle-fill" onClick={prevMonth} />
         <Icon icon="bi:arrow-right-circle-fill" onClick={nextMonth} />
-      </div> */}
+      </div>
     </div>
   );
 };
 
 const RenderDays = () => {
   const days = [];
-  const date = ["Sun", "Mon", "Thu", "Wed", "Thrs", "Fri", "Sat"];
+  const date = ["Sun", "Mon", "Thu", "Wed", "Thur", "Fri", "Sat"];
 
   for (let i = 0; i < 7; i++) {
     days.push(
@@ -97,6 +98,7 @@ export default function Calender() {
   };
   return (
     <div className="calendar">
+      <Header />
       <RenderHeader currentMonth={currentMonth} prevMonth={prevMonth} nextMonth={nextMonth} />
       <RenderDays />
       <RenderCells currentMonth={currentMonth} selectedDate={selectedDate} onDateClick={onDateClick} />
