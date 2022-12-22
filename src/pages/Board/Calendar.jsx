@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 import { format, addMonths, subMonths } from "date-fns";
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from "date-fns";
 import { isSameMonth, isSameDay, addDays, parse } from "date-fns";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 
 const RenderHeader = ({ currentMonth, prevMonth, nextMonth }) => {
   return (
@@ -24,7 +24,7 @@ const RenderHeader = ({ currentMonth, prevMonth, nextMonth }) => {
 
 const RenderDays = () => {
   const days = [];
-  const date = ["Sun", "Mon", "Thu", "Wed", "Thrs", "Fri", "Sat"];
+  const date = ["Sun", "Mon", "Thu", "Wed", "Thur", "Fri", "Sat"];
 
   for (let i = 0; i < 7; i++) {
     days.push(

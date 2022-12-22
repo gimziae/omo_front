@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
-import Stars from "../components/Stars";
+import Stars from "../../components/Board/Stars";
+import Header from "../../components/Header";
+
+// import Header from "../components/Header";
+// import Stars from "../components/Board/Stars";
 
 export default function Board() {
   const [clicked, setClicked] = useState([false, false, false, false, false]);
