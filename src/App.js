@@ -1,19 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 
-import Login from "./components/user/Login";
-import Register from "./components/user/Register";
-import Board from "./pages/Board";
-import Calender from "./pages/Calender";
 import KakaoRedirectHandler from "./components/user/KakaoRedirectHandler";
-
-import Main from "./pages/Main";
 
 import "./scss/style.scss";
 
 // pages
 import Main from "./pages/Main";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Login from "./components/user/Login";
+import Register from "./components/user/Register";
 import Diary from "./pages/Board/Diary";
 import Calendar from "./pages/Board/Calendar";
 import Calculate from "./pages/Board/Calculate";
