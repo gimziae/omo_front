@@ -5,7 +5,7 @@
     z-index: 10;
 
     .wrap {
-        border: 1px solid red;
+        // border: 1px solid red;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -19,8 +19,22 @@
 
         .login {
             font-size: 25px;
-            color: #c7c7c7;
+            color: #c5c5c5;
             cursor: pointer;
+            text-decoration: none;
+            span {
+                font-size: 20px;
+                margin-right: 10px;
+            }
+        }
+        .logout {
+            font-size: 20px;
+            svg {
+                font-size: 50px;
+                color: #c5c5c5;
+                padding: 0 10px;
+                cursor: pointer;
+            }
         }
     }
 }

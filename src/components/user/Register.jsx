@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import Header from "./Header";
+import Header from "../Header";
 
 export default function Register() {
 	const userIdInput = useRef();
