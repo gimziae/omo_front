@@ -54,7 +54,7 @@ export default function KakaoRedirectHandler() {
 
 					// 회원가입 처리
 					const registerResponse = await fetch(
-						"http://localhost:4000/auth/signin",
+						"http://3.36.75.61:4000/auth/signin",
 						{
 							method: "POST",
 							headers: {

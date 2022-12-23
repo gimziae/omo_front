@@ -1,6 +1,7 @@
 // 초기 상태값
 const initState = {
-	userId: "",
+	email: "",
+	name: "",
 	isLogin: false,
 };
 
@@ -28,14 +29,16 @@ export default function user(state = initState, action) {
 		case LOGIN:
 			return {
 				...state,
-				userId: action.payload.id,
+				email: action.payload.email,
+				name: action.payload.name,
 				isLogin: true,
 			};
 		case LOGOUT:
 			return {
 				...state,
 				isLogin: false,
-				userId: "",
+				email: "",
+				name: "",
 			};
 		default:
 			return state;

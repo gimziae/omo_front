@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 // component
 import Header from "../Header";
 
@@ -18,6 +18,8 @@ export default function Login() {
 	const inputId = useRef();
 	const inputPw = useRef();
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	// const local = 'http://'
 
 	// 로그인 처리 함수
 	async function loginUser() {
@@ -28,7 +30,7 @@ export default function Login() {
 
 		if (loginInfo.email !== "" && loginInfo.password !== "") {
 			const loginResponse = await fetch(
-				"http://localhose:4000/auth/signin",
+				"http://localhost:4000/auth/signin",
 				{
 					method: "POST",
 					headers: {
@@ -39,17 +41,19 @@ export default function Login() {
 			);
 			if (loginResponse.status === 200) {
 				const result = await loginResponse.json();
-				console.log(result);
-				if (result.result) {
+
+				if (result) {
 					dispatch(login(result));
+					navigate("/");
 				}
 			} else {
+				alert("로그인 실패");
 				throw new Error("로그인 실패");
 			}
 		} else {
 			alert("아이디 또는 비밀번호를 입력해 주세요.");
 		}
-		console.log("로그인 실패");
+		console.log(loginInfo);
 	}
 
 	return (
@@ -57,7 +61,7 @@ export default function Login() {
 			<Header />
 			<div className="login-wrap">
 				<div className="loginBox">
-					<form>
+					<div>
 						<h1>로그인</h1>
 						<p className="register">
 							아직 회원이 아니시라면?
@@ -65,14 +69,19 @@ export default function Login() {
 						</p>
 
 						<br />
-						<label>아이디</label>
+						<label>아이디(이메일)</label>
 						<br />
-						<input ref={inputId} placeholder="ex)abc@omo.com" />
+						<input
+							ref={inputId}
+							type="email"
+							placeholder="ex)abc@omo.com"
+						/>
 						<br />
 						<label>비밀번호</label>
 						<br />
 						<input
 							ref={inputPw}
+							type="password"
 							placeholder="비밀번호를 입력하세요."
 						/>
 						<br />
@@ -88,7 +97,7 @@ export default function Login() {
 							</a>
 						</div>
 						<br />
-					</form>
+					</div>
 				</div>
 			</div>
 		</>
