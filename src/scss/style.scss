@@ -39,7 +39,8 @@ body {
 
 // components
 @import "./components/header";
-@import "./components/stars";
+@import "./components/Board/stars";
+@import "./components/Board/profile";
 @import "./components/login";
 @import "./components/register";
 
