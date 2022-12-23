@@ -1,5 +1,9 @@
 import React from "react";
 import Header from "../components/Header";
+import Best from "../components/main/Best";
+import Intro from "../components/main/Intro";
+import Plan from "../components/main/Plan";
+import Popular from "../components/main/Popular";
 
 export default function Main() {
 	return (
@@ -7,7 +11,11 @@ export default function Main() {
 			<Header />
 			<main>
 				<div className="mainWrap">
-					<h1>메인 페이지 입니다.</h1>
+					<Intro />
+					{/* plan 로그인 시에만 보이게 */}
+					<Plan />
+					<Popular />
+					<Best />
 				</div>
 			</main>
 		</>

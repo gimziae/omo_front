@@ -44,6 +44,12 @@ body {
 @import "./components/login";
 @import "./components/register";
 
+// main
+@import "./components/main/intro";
+@import "./components/main/popular";
+@import "./components/main/best";
+@import "./components/main/plan";
+
 // pages
 @import "./pages/main";
 @import "./pages/board";
