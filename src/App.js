@@ -12,6 +12,8 @@ import Diary from "./pages/Board/Diary";
 import Calendar from "./pages/Board/Calendar";
 import Calculate from "./pages/Board/Calculate";
 import Board from "./pages/Board/Board";
+import Tour from "./pages/Tour";
+import RestaurantPage from "./components/Tour/RestaurantPage";
 
 function App() {
 	return (
@@ -28,6 +30,8 @@ function App() {
 					path="/oauth/callback/kakao"
 					element={<KakaoRedirectHandler />}
 				/>
+				<Route path="/tour" element={<Tour />} />
+				<Route path="/tourmore" element={<RestaurantPage />} />
 			</Routes>
 		</div>
 	);

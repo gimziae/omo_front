@@ -50,6 +50,12 @@ body {
 @import "./components/main/best";
 @import "./components/main/plan";
 
+// tour
+@import "./components/tour/popularArea";
+@import "./components/tour/restaurant";
+@import "./components/tour/restaurantPage";
+@import "./components/tour/tourArea";
+
 // pages
 @import "./pages/main";
 @import "./pages/board";
