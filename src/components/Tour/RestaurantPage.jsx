@@ -1,22 +1,20 @@
 import React from "react";
 
-import { BsFillBookmarkFill, BsFillHeartFill } from "react-icons/bs";
+import { HiShare, HiOutlineBookmark } from "react-icons/hi";
 import Header from "../Header";
 
 export default function RestaurantPage() {
 	return (
 		<>
 			<Header />
-			<div>
+			{/* <div>
 				<h1>장소</h1>
 				<BsFillBookmarkFill />
-			</div>
+			</div> */}
 
 			<br />
 			<div className="introduce">
-				<div className="left">
-					<img src alt="api 지도" />
-				</div>
+				<div className="left"></div>
 				<div className="right">
 					<h2>설명</h2>
 					<p>
@@ -28,11 +26,10 @@ export default function RestaurantPage() {
 					</p>
 					<div className="icons">
 						<div className="item">
-							<BsFillHeartFill />
-							공유
+							<HiShare /> 공유
 						</div>
 						<div className="item">
-							<BsFillBookmarkFill />
+							<HiOutlineBookmark />
 							저장
 						</div>
 					</div>

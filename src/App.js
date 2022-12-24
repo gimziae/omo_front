@@ -16,21 +16,24 @@ import RestaurantPage from "./components/tour/RestaurantPage";
 import UserBoard from "./pages/UserBoard";
 
 function App() {
-  return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/board" element={<UserBoard />} />
-        <Route path="/diary" element={<Diary />} />
-        <Route path="/calender" element={<Calendar />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler />} />
-        <Route path="/tour" element={<Tour />} />
-        <Route path="/tourmore" element={<RestaurantPage />} />
-      </Routes>
-    </div>
-  );
+	return (
+		<div className="App">
+			<Routes>
+				<Route path="/" element={<Main />} />
+				<Route path="/board" element={<UserBoard />} />
+				<Route path="/diary" element={<Diary />} />
+				<Route path="/calender" element={<Calendar />} />
+				<Route path="/register" element={<Register />} />
+				<Route path="/login" element={<Login />} />
+				<Route
+					path="/oauth/callback/kakao"
+					element={<KakaoRedirectHandler />}
+				/>
+				<Route path="/tour" element={<Tour />} />
+				<Route path="/tourmore/:no" element={<RestaurantPage />} />
+			</Routes>
+		</div>
+	);
 }
 
 export default App;
