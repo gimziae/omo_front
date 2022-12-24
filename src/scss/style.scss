@@ -55,7 +55,8 @@ body {
 @import "./components/tour/tourArea";
 
 // board
-@import "./components/board/diary";
+@import "./pages/board/diary";
+@import "./pages/board/calendar";
 @import "./components/board/stars";
 @import "./components/board/profile";
 

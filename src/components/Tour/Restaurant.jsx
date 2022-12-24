@@ -1,5 +1,5 @@
 import React from "react";
-import AreaCards from "../Tour_list/AreaCards";
+import AreaCards from "../tour_list/AreaCards";
 
 const Restaurant = () => {
 	const data = [

@@ -8,11 +8,11 @@ import "./scss/style.scss";
 import Main from "./pages/Main";
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";
-import Diary from "./pages/Board/Diary";
-import Calendar from "./pages/Board/Calendar";
+import Diary from "./pages/board/Diary";
+import Calendar from "./pages/board/Calendar";
 
 import Tour from "./pages/Tour";
-import RestaurantPage from "./components/Tour/RestaurantPage";
+import RestaurantPage from "./components/tour/RestaurantPage";
 import UserBoard from "./pages/UserBoard";
 
 function App() {
