@@ -5,12 +5,12 @@ import Restaurant from "../components/tour/Restaurant";
 import TourArea from "../components/tour/TourArea";
 
 export default function Tour() {
-	return (
-		<>
-			<Header />
-			<PopularArea />
-			<TourArea />
-			<Restaurant />
-		</>
-	);
+  return (
+    <>
+      <Header />
+      <PopularArea />
+      <TourArea />
+      <Restaurant />
+    </>
+  );
 }
