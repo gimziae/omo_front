@@ -34,9 +34,9 @@ export default function UserBoard() {
 						<hr />
 						<h3>MENU</h3>
 						<ul className="menu">
-							{menuList.map((item, index) => (
+							{menuList.map((item) => (
 								<li
-									key={index}
+									key={item.id}
 									className={item.componentName}
 									onClick={() => setIndex(item.id)}>
 									- {item.name}
@@ -48,7 +48,9 @@ export default function UserBoard() {
 						{menuList
 							.filter((item) => index === item.id)
 							.map((item) => (
-								<div className={item.componentName}>
+								<div
+									className={item.componentName}
+									key={item.id}>
 									{item.component}
 								</div>
 							))}
