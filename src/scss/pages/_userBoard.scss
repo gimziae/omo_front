@@ -1,0 +1,22 @@
+#board {
+  padding: 2em 6em;
+  .wrap {
+    display: flex;
+
+    .left {
+      border: 1px solid red;
+      h3 {
+        color: #c7c7c7;
+      }
+      .menu {
+        li {
+          cursor: pointer;
+        }
+      }
+    }
+    .right {
+      border: 1px solid red;
+      width: 100%;
+    }
+  }
+}

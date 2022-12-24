@@ -16,7 +16,6 @@ export default function Board() {
 	let score = clicked.filter(Boolean).length;
 	return (
 		<>
-			<Header />
 			{/* section1 */}
 			<div className="section1_container">
 				<div className="board_header">

@@ -104,7 +104,6 @@ export default function Calender() {
 	};
 	return (
 		<div className="calendar">
-			<Header />
 			<RenderHeader
 				currentMonth={currentMonth}
 				prevMonth={prevMonth}

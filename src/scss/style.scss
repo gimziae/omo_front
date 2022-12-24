@@ -39,8 +39,6 @@ body {
 
 // components
 @import "./components/header";
-@import "./components/Board/stars";
-@import "./components/Board/profile";
 @import "./components/login";
 @import "./components/register";
 
@@ -56,6 +54,11 @@ body {
 @import "./components/tour/restaurantPage";
 @import "./components/tour/tourArea";
 
+// board
+@import "./components/board/diary";
+@import "./components/board/stars";
+@import "./components/board/profile";
+
 // pages
 @import "./pages/main";
-@import "./pages/board";
+@import "./pages/userBoard";

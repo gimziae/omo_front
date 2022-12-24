@@ -1,29 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
+import Calender from "../../pages/Board/Calendar";
+import Diary from "../../pages/Board/Diary";
+
+const menuList = [
+	{
+		id: 0,
+		name: "일정",
+		componentName: "calendar",
+		component: <Calender />,
+	},
+	{
+		id: 1,
+		name: "다이어리",
+		componentName: "diary",
+		component: <Diary />,
+	},
+];
 
 export default function Menu() {
-  return (
-    <>
-      <div class="header">
-        <div class="search">
-          <i class="material-icons">search</i>
-          <input type="text"></input>
-          <button>GO!</button>
-        </div>
-      </div>
-      <br />
-      <div className="side">
-        <div className="inner">
-          <span>MENU</span>
-          <br />
-          <div className="menu">
-            <button type="calender">♦︎ 캘린더</button>
-            <br />
-            <button type="diary">♦︎ 공유 다이어리</button>
-            <br />
-            <button type="diary">♦︎ 저장 목록</button>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+	const [index, setIndex] = useState(0);
+	return (
+		<>
+			<hr />
+			<div className="side">
+				<div className="inner">
+					<span>MENU</span>
+					<br />
+					<ul className="menu">
+						{menuList.map((item, index) => (
+							<li
+								key={index}
+								className={item.componentName}
+								onClick={() => setIndex(item.id)}>
+								{item.name}
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+		</>
+	);
 }
