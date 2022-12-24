@@ -30,7 +30,7 @@ function App() {
 					element={<KakaoRedirectHandler />}
 				/>
 				<Route path="/tour" element={<Tour />} />
-				<Route path="/tourmore" element={<RestaurantPage />} />
+				<Route path="/tourmore/:no" element={<RestaurantPage />} />
 			</Routes>
 		</div>
 	);
