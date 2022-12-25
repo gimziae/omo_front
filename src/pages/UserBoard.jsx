@@ -2,8 +2,8 @@ import React from "react";
 
 import Header from "../components/Header";
 import Profile from "../components/board/Profile";
-import Calender from "./board/Calendar";
-import Diary from "./board/Diary";
+import Calender from "./Board/Calendar";
+import Diary from "./Board/Diary";
 import { useState } from "react";
 
 const menuList = [
