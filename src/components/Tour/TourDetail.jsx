@@ -6,6 +6,7 @@ import { data } from "../db/data";
 import { useParams } from "react-router-dom";
 
 export default function TourDetail() {
+  // 주소값 받기
   let { areaID } = useParams();
   areaID = parseInt(areaID);
   const areaData = data.filter((el) => {
