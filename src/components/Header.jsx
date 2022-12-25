@@ -1,4 +1,4 @@
-import { FaUser, FaSignOutAlt, FaSignInAlt } from "react-icons/fa";
+import { FaSignOutAlt, FaSignInAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { logout } from "../redux/modules/user";

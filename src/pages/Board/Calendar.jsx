@@ -3,7 +3,6 @@ import { Icon } from "@iconify/react";
 import { format, addMonths, subMonths } from "date-fns";
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from "date-fns";
 import { isSameMonth, isSameDay, addDays, parse } from "date-fns";
-import Header from "../../components/Header";
 
 const RenderHeader = ({ currentMonth, prevMonth, nextMonth }) => {
 	return (

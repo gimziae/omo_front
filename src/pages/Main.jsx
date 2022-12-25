@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Header from "../components/Header";
 import Best from "../components/main/Best";
 import Intro from "../components/main/Intro";

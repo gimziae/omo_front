@@ -1,6 +1,4 @@
 import React from "react";
-import { useRef } from "react";
-import { useState } from "react";
 
 export default function Profile() {
 	return (

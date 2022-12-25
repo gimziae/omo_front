@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import Stars from "../../components/board/Stars";
-import Header from "../../components/Header";
+import { ImStarFull } from "react-icons/im";
 
 export default function Board() {
-	const [clicked, setClicked] = useState([false, false, false, false, false]);
-	const array = [0, 1, 2, 3, 4];
+	// const [clicked, setClicked] = useState([false, false, false, false, false]);
+	// const array = [0, 1, 2, 3, 4];
 
-	const handleStarClick = (index) => {
-		let clickStates = [...clicked];
-		for (let i = 0; i < 5; i++) {
-			clickStates[i] = i <= index ? true : false;
-		}
-		setClicked(clickStates);
-	};
-	let score = clicked.filter(Boolean).length;
+	// const handleStarClick = (index) => {
+	// 	let clickStates = [...clicked];
+	// 	for (let i = 0; i < 5; i++) {
+	// 		clickStates[i] = i <= index ? true : false;
+	// 	}
+	// 	setClicked(clickStates);
+	// };
+	// let score = clicked.filter(Boolean).length;
 	return (
 		<>
 			{/* section1 */}
