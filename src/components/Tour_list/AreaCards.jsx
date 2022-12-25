@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./AreaCards.scss";
+import "../../scss/components/tour_list/_areaCards.scss";
 
 const AreaCards = ({ area }) => {
   return (
