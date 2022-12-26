@@ -5,6 +5,7 @@ import Profile from "../components/board/Profile";
 import Calender from "./board/Calendar";
 import Diary from "./board/Diary";
 import { useState } from "react";
+import Content from "./board/Content";
 
 const menuList = [
   {
@@ -18,6 +19,12 @@ const menuList = [
     name: "다이어리",
     componentName: "diary",
     component: <Diary />,
+  },
+  {
+    id: 2,
+    name: "todolist",
+    componentName: "todolist",
+    component: <Content />,
   },
 ];
 
