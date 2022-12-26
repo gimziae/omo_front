@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useState } from "react";
 
-import { data } from "../db/data";
+// 관광정보
+const key =
+	"ooVIIXvB%2F%2F%2B6kPC1iOe5%2FArkuU5iefGXK4vuV228x6faKt32nsB1O%2BZCEVg8v3xcT6m9tvBLsprDfDjVs5gt3w%3D%3D";
+const areaCd = 1; //서울시
+const sggCd = 7; //구로구
+const url = `https://apis.data.go.kr/B551011/KorService/areaBasedList?_type=json&serviceKey=${key}&pageNo=1&numOfRows=10&MobileApp=AppTest&MobileOS=ETC&arrange=A&contentTypeId=39&areaCode=${areaCd}&sigunguCode=${sggCd}
+`;
+
+// import { data } from "../db/data";
 
 export default function PopularArea() {
 	const settings = {
@@ -41,19 +50,40 @@ export default function PopularArea() {
 		],
 	};
 
+	const [data, setData] = useState([]);
+
+	useEffect(() => {
+		fetch(url)
+			.then((res) => {
+				return res.json();
+			})
+			.then((json) => {
+				console.log(json.response.body.items.item);
+				setData(json.response.body.items.item);
+				console.log(setData);
+			});
+	}, []);
+
 	return (
 		<>
 			<h1 className="todayplace">
 				OMO가 추천하는 <span># 서울 관광지</span>
 			</h1>
 			<Slider {...settings}>
-				{data.map((data) => (
-					<div className="card" key={data.id}>
+				{data.map((data, index) => (
+					<div className="card" key={index}>
 						<div className="card-top">
-							<img src={data.img} alt={data.text} />
+							<img
+								src={
+									data.firstimage === ""
+										? "/images/profile.jpeg"
+										: data.firstimage
+								}
+								alt={data.title}
+							/>
 						</div>
 						<div className="card-bottom">
-							<h2>{data.text}</h2>
+							<h2>{data.title}</h2>
 						</div>
 					</div>
 				))}

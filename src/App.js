@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
-import KakaoRedirectHandler from "./components/user/KakaoRedirectHandler";
+// import KakaoRedirectHandler from "./components/user/KakaoRedirectHandler";
 
 import "./scss/style.scss";
 
@@ -23,10 +23,10 @@ function App() {
 				<Route path="/calender" element={<Calender />} />
 				<Route path="/register" element={<Register />} />
 				<Route path="/login" element={<Login />} />
-				<Route
+				{/* <Route
 					path="/oauth/callback/kakao"
 					element={<KakaoRedirectHandler />}
-				/>
+				/> */}
 				<Route path="/tour" element={<Tour />} />
 			</Routes>
 		</div>
