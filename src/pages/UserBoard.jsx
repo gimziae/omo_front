@@ -20,12 +20,6 @@ const menuList = [
     componentName: "diary",
     component: <Diary />,
   },
-  {
-    id: 2,
-    name: "todolist",
-    componentName: "todolist",
-    component: <Content />,
-  },
 ];
 
 export default function UserBoard() {
