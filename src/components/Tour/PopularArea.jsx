@@ -65,29 +65,31 @@ export default function PopularArea() {
 	}, []);
 
 	return (
-		<>
-			<h1 className="todayplace">
+		<section className="popularArea">
+			<h1 className="todayPlace">
 				OMO가 추천하는 <span># 서울 관광지</span>
 			</h1>
-			<Slider {...settings}>
-				{data.map((data, index) => (
-					<div className="card" key={index}>
-						<div className="card-top">
-							<img
-								src={
-									data.firstimage === ""
-										? "/images/profile.jpeg"
-										: data.firstimage
-								}
-								alt={data.title}
-							/>
+			<div className="sliderWrap">
+				<Slider {...settings}>
+					{data.map((data, index) => (
+						<div className="card" key={index}>
+							<div className="card-top">
+								<img
+									src={
+										data.firstimage === ""
+											? "/images/profile.jpeg"
+											: data.firstimage
+									}
+									alt={data.title}
+								/>
+							</div>
+							<div className="card-bottom">
+								<h2>{data.title}</h2>
+							</div>
 						</div>
-						<div className="card-bottom">
-							<h2>{data.title}</h2>
-						</div>
-					</div>
-				))}
-			</Slider>
-		</>
+					))}
+				</Slider>
+			</div>
+		</section>
 	);
 }

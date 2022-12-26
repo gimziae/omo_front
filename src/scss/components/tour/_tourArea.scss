@@ -1,10 +1,25 @@
 .tourarea {
   margin: 10px 30px;
   margin-bottom: 30px;
+  .searchbar {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .search {
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  h1 {
+    margin-top: 100px;
+  }
 
   .bottom {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 40px;
+    flex-wrap: wrap;
   }
 }

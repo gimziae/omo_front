@@ -1,26 +1,32 @@
-h1 {
-  text-align: center;
-}
+.popularArea {
+  border: 3px solid red;
+  padding: 2rem 3rem;
+  h1.todayPlace {
+    text-align: center;
+    margin-bottom: 30px;
+    span {
+      color: rgb(110, 66, 151);
+    }
+  }
 
-h2 {
-  font-size: 10;
-  text-align: center;
-  border-bottom: 50px;
-}
-
-.card {
-  overflow: hidden;
-  border-bottom: 500px;
-}
-
-.card-top img {
-  width: 400px;
-  height: 500px;
-  object-fit: cover;
-  border-radius: 5% 5%;
-  margin: 0 auto;
-}
-
-span {
-  color: rgb(110, 66, 151);
+  .sliderWrap {
+    .card {
+      overflow: hidden;
+      border-bottom: 500px;
+      .card-top img {
+        width: 400px;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 5% 5%;
+        margin: 0 auto;
+      }
+      .card-bottom {
+        h2 {
+          font-size: 10;
+          text-align: center;
+          border-bottom: 50px;
+        }
+      }
+    }
+  }
 }

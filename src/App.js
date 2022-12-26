@@ -12,6 +12,7 @@ import Diary from "./pages/board/Diary";
 import Tour from "./pages/Tour";
 import UserBoard from "./pages/UserBoard";
 import Calender from "./pages/board/Calendar";
+import TourDetail from "./components/tour/TourDetail";
 
 function App() {
 	return (
@@ -28,6 +29,7 @@ function App() {
 					element={<KakaoRedirectHandler />}
 				/> */}
 				<Route path="/tour" element={<Tour />} />
+				<Route path="/tour/:areaID" element={<TourDetail />} />
 			</Routes>
 		</div>
 	);
