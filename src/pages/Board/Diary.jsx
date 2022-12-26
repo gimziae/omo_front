@@ -3,6 +3,7 @@ import Stars from "../../components/board/Stars";
 import { ImStarFull } from "react-icons/im";
 
 export default function Board() {
+
 	// const [clicked, setClicked] = useState([false, false, false, false, false]);
 	// const array = [0, 1, 2, 3, 4];
 
@@ -50,4 +51,5 @@ export default function Board() {
 			</div>
 		</>
 	);
+
 }
