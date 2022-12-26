@@ -1,13 +1,15 @@
 .stars {
   display: inline-block;
-  &svg {
+  border: 1px solid red;
+
+  & svg {
     color: #c4c4c4;
     cursor: pointer;
   }
   :hover svg {
     color: yellow;
   }
-  &svg:hover ~ svg {
+  & svg:hover ~ svg {
     color: #c4c4c4;
   }
   .yellow {

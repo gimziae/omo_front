@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
-import KakaoRedirectHandler from "./components/user/KakaoRedirectHandler";
+// import KakaoRedirectHandler from "./components/user/KakaoRedirectHandler";
 
 import "./scss/style.scss";
 
@@ -9,13 +9,15 @@ import Main from "./pages/Main";
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";
 import Diary from "./pages/board/Diary";
+
 import Diary1st from "./pages/board/Diary1st";
 import DiaryModify from "./pages/board/DiaryModify";
 import Calendar from "./pages/board/Calendar";
 
 import Tour from "./pages/Tour";
-import RestaurantPage from "./components/tour/RestaurantPage";
 import UserBoard from "./pages/UserBoard";
+import Calender from "./pages/board/Calendar";
+import TourDetail from "./components/tour/TourDetail";
 
 function App() {
   return (
@@ -32,10 +34,11 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler />} />
         <Route path="/tour" element={<Tour />} />
-        <Route path="/tourmore" element={<RestaurantPage />} />
+        <Route path="/tour/:index" element={<TourDetail/>} />
       </Routes>
     </div>
   );
+
 }
 
 export default App;

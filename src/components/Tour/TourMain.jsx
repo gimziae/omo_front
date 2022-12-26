@@ -1,16 +1,13 @@
 import React from "react";
-import PopularArea from "../Tour/PopularArea";
-import TourArea from "../Tour/TourArea";
-import Restaurant from "../Tour/Restaurant";
-import Header from "../Header";
+import PopularArea from "./PopularArea";
+import TourArea from "./TourArea";
+// import {} from "react-router-dom";
 
 export default function TourMain() {
-	return (
-		<>
-			<Header />
-			<PopularArea />
-			<TourArea />
-			<Restaurant />
-		</>
-	);
+  return (
+    <>
+      <PopularArea />
+      <TourArea />
+    </>
+  );
 }

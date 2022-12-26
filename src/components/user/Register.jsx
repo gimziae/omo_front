@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Header from "../Header";
 
@@ -7,7 +6,7 @@ export default function Register() {
 	const userIdInput = useRef();
 	const userPwInput = useRef();
 	const userNameInput = useRef();
-	const dispatch = useDispatch();
+
 	const navigate = useNavigate();
 
 	async function registerUser() {
