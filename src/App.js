@@ -10,6 +10,7 @@ import Login from "./components/user/Login";
 import Register from "./components/user/Register";
 import Diary from "./pages/board/Diary";
 import Calendar from "./pages/board/Calendar";
+import Content from "./pages/board/Content";
 
 import Tour from "./pages/Tour";
 import RestaurantPage from "./components/tour/RestaurantPage";
@@ -23,6 +24,7 @@ function App() {
         <Route path="/board" element={<UserBoard />} />
         <Route path="/diary" element={<Diary />} />
         <Route path="/calender" element={<Calendar />} />
+        <Route path="/Content" element={<Content />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler />} />
