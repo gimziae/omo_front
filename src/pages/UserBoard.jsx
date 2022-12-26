@@ -5,7 +5,6 @@ import Profile from "../components/board/Profile";
 import Calender from "./board/Calendar";
 import Diary from "./board/Diary";
 import { useState } from "react";
-import Content from "./board/Content";
 
 const menuList = [
   {
