@@ -1,15 +1,15 @@
 import React from "react";
 import { useEffect } from "react";
-import AreaCards from "../tour_list/AreaCards";
-import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 const key =
 	"ooVIIXvB%2F%2F%2B6kPC1iOe5%2FArkuU5iefGXK4vuV228x6faKt32nsB1O%2BZCEVg8v3xcT6m9tvBLsprDfDjVs5gt3w%3D%3D";
 const areaCd = 1; //서울시
 const sggCd = 7; //구로구
 const url = `https://apis.data.go.kr/B551011/KorService/areaBasedList?_type=json&serviceKey=${key}&pageNo=1&numOfRows=10&MobileApp=AppTest&MobileOS=ETC&arrange=A&contentTypeId=39&areaCode=${areaCd}&sigunguCode=${sggCd}
 `;
+
 export default function TourArea() {
 	const [data, setData] = useState([]);
 

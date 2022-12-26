@@ -1,9 +1,9 @@
 import React from "react";
-// import "./TourDetail.scss";
 import { BsFillBookmarkFill, BsFillHeartFill } from "react-icons/bs";
 
 import { data } from "../db/data";
 import { useParams } from "react-router-dom";
+import Header from "../Header";
 
 export default function TourDetail() {
 	// 주소값 받기
@@ -15,6 +15,7 @@ export default function TourDetail() {
 
 	return (
 		<>
+			<Header />
 			<div>
 				<h1>{areaData[0].text}</h1>
 			</div>
