@@ -8,7 +8,7 @@ import { useState } from "react";
 const key =
 	"ooVIIXvB%2F%2F%2B6kPC1iOe5%2FArkuU5iefGXK4vuV228x6faKt32nsB1O%2BZCEVg8v3xcT6m9tvBLsprDfDjVs5gt3w%3D%3D";
 const areaCd = 1; //서울시
-const sggCd = 7; //구로구
+const sggCd = 13; //구로구
 const contentTypeId = 12;
 const url = `https://apis.data.go.kr/B551011/KorService/areaBasedList?_type=json&serviceKey=${key}&pageNo=1&numOfRows=10&MobileApp=AppTest&MobileOS=ETC&arrange=A&contentTypeId=${contentTypeId}&areaCode=${areaCd}&sigunguCode=${sggCd}
 `;
@@ -17,20 +17,21 @@ export default function PopularArea() {
 	const settings = {
 		dots: true,
 		infinite: true,
-		speed: 500,
+		autoplay: true,
+		pauseOnHover: true,
+		speed: 2500,
 		arrow: true,
 		draggable: true,
-		slidesToShow: 3,
-		slidesToScroll: 2,
+		slidesToShow: 2,
+		slidesToScroll: 1,
 		initialSlide: 0,
-		// prevArrow: "<button type='button' class='slick-prev'>Previous</button>", // 이전 화살표 모양 설정
-		// nextArrow: "<button type='button' class='slick-next'>Next</button>", // 다음 화살표 모양 설정
+
 		responsive: [
 			{
 				breakpoint: 1199,
 				settings: {
-					slidesToShow: 3,
-					slidesToScroll: 2,
+					slidesToShow: 2,
+					slidesToScroll: 1,
 					infinite: true,
 					dots: true,
 				},

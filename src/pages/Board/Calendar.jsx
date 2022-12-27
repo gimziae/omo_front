@@ -101,6 +101,7 @@ export default function Calender() {
 	const onDateClick = (day) => {
 		setSelectedDate(day);
 	};
+	console.log(new Date(selectedDate).getMonth() + 1);
 	return (
 		<div className="calendar">
 			<RenderHeader

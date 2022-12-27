@@ -34,6 +34,7 @@ export default function Login() {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
+						// Authorization: localStorage.getItem("Token"),
 					},
 					body: JSON.stringify(loginInfo), // 보낼 값
 				}
