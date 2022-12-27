@@ -12,16 +12,14 @@ const contentTypeId = 12;
 const url = `https://apis.data.go.kr/B551011/KorService/areaBasedList?_type=json&serviceKey=${key}&pageNo=1&numOfRows=10&MobileApp=AppTest&MobileOS=ETC&arrange=A&contentTypeId=${contentTypeId}&areaCode=${areaCd}&sigunguCode=${sggCd}
 `;
 
-export default function PopularArea() {
+export default function CulturePopularArea() {
   const settings = {
     dots: true,
     infinite: true,
-    autoplay: true,
-    pauseOnHover: true,
-    speed: 2500,
+    speed: 500,
     arrow: true,
     draggable: true,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 2,
     initialSlide: 0,
     // prevArrow: "<button type='button' class='slick-prev'>Previous</button>", // 이전 화살표 모양 설정
@@ -31,7 +29,7 @@ export default function PopularArea() {
         breakpoint: 1199,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
           infinite: true,
           dots: true,
         },
@@ -70,7 +68,7 @@ export default function PopularArea() {
   return (
     <section className="popularArea">
       <h1 className="todayPlace">
-        OMO가 추천하는 <span># 서울 관광지</span>
+        OMO가 추천하는 <span># 서울 문화시설</span>
       </h1>
       <div className="sliderWrap">
         <Slider {...settings}>

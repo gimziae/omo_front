@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import AreaCards from "../tour_list/AreaCards";
+import CultureCards from "./CultureCards";
 import { save } from "../../redux/modules/area";
 // import { useDispatch } from "react-redux";
 
@@ -12,7 +12,7 @@ const url = `https://apis.data.go.kr/B551011/KorService/areaBasedList?_type=json
 `;
 
 // &sigunguCode=${sggCd}
-export default function TourArea() {
+export default function CultureArea() {
   const [query, setQuery] = useState("");
   const [data, setData] = useState([]);
 
@@ -30,7 +30,7 @@ export default function TourArea() {
   return (
     <section className="tourArea">
       <h1>
-        <span>#</span> 관광지
+        <span>#</span> 문화시설
       </h1>
 
       <div className="tabMenu">
@@ -47,7 +47,7 @@ export default function TourArea() {
         {data
           .filter((data) => data.addr1.toLowerCase().includes(query))
           .map((area) => (
-            <AreaCards area={area} key={area.contentid} />
+            <CultureCards area={area} key={area.contentid} />
           ))}
       </div>
     </section>

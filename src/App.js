@@ -17,32 +17,42 @@ import Calendar from "./pages/board/Calendar";
 import Tour from "./pages/Tour";
 import TourDetail from "./components/tour/TourDetail";
 
+import Culture from "./pages/Culture";
+import Food from "./pages/Food";
+
 function App() {
-	return (
-		<div className="App">
-			<Routes>
-				{/* 메인 */}
-				<Route path="/" element={<Main />} />
+  return (
+    <div className="App">
+      <Routes>
+        {/* 메인 */}
+        <Route path="/" element={<Main />} />
 
-				{/* 로그인 */}
-				<Route path="/register" element={<Register />} />
-				<Route path="/login" element={<Login />} />
+        {/* 로그인 */}
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
 
-				{/* 회원페이지 */}
-				<Route path="/board" element={<UserBoard />} />
-				{/* 회원페이지 - 다이어리 */}
-				<Route path="/diary" element={<Diary />} />
-				<Route path="/diary/write" element={<DiaryWrite />} />
-				<Route path="/diary/modify" element={<DiaryModify />} />
-				{/* 회원페이지 - 일정 */}
-				<Route path="/calendar" element={<Calendar />} />
+        {/* 회원페이지 */}
+        <Route path="/board" element={<UserBoard />} />
+        {/* 회원페이지 - 다이어리 */}
+        <Route path="/diary" element={<Diary />} />
+        <Route path="/diary/write" element={<DiaryWrite />} />
+        <Route path="/diary/modify" element={<DiaryModify />} />
+        {/* 회원페이지 - 일정 */}
+        <Route path="/calendar" element={<Calendar />} />
 
-				{/* 가볼만한 곳 */}
-				<Route path="/tour" element={<Tour />} />
-				<Route path="/tour/:contentid" element={<TourDetail />} />
-			</Routes>
-		</div>
-	);
+        {/* 가볼만한 곳 */}
+        <Route path="/tour" element={<Tour />} />
+        <Route path="/tour/:contentid" element={<TourDetail />} />
+
+        {/* link 수정진행 */}
+        {/* 문화시설 */}
+        <Route path="/culture" element={<Culture />} />
+
+        {/* 식당 */}
+        <Route path="/food" element={<Food />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
