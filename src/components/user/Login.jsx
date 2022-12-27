@@ -19,7 +19,6 @@ export default function Login() {
 	const inputPw = useRef();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	// const local = 'http://'
 
 	// 로그인 처리 함수
 	async function loginUser() {

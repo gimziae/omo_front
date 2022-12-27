@@ -1,55 +1,44 @@
-import React, { useState } from "react";
-import Stars from "../../components/board/Stars";
-import { ImStarFull } from "react-icons/im";
+import React from "react";
 
-export default function Board() {
-
-	// const [clicked, setClicked] = useState([false, false, false, false, false]);
-	// const array = [0, 1, 2, 3, 4];
-
-	// const handleStarClick = (index) => {
-	// 	let clickStates = [...clicked];
-	// 	for (let i = 0; i < 5; i++) {
-	// 		clickStates[i] = i <= index ? true : false;
-	// 	}
-	// 	setClicked(clickStates);
-	// };
-	// let score = clicked.filter(Boolean).length;
+export default function Diary1st() {
 	return (
 		<>
-			{/* section1 */}
-			<div className="section1_container">
-				<div className="board_header">
-					<h1>BOARD PAGE</h1>
+			<div className="inner">
+				<div className="board_container">
+					<div className="board_header">
+						<h1>BOARD PAGE</h1>
+					</div>
+					<div className="board_write">
+						<span>현재 등록 글 : </span>
+						<a className="btn blue" href="/board/write">
+							글쓰기
+						</a>
+					</div>
+					<div className="board_body">
+						<ul className="board">
+							<li>
+								<div className="title"></div>
+								<div className="content"></div>
+								<div className="foot">
+									<a
+										className="btn green"
+										href="board/modify">
+										수정
+									</a>
+									<a className="btn red" href="#">
+										삭제
+									</a>
+								</div>
+							</li>
+							<li>
+								<div className="title">
+									등록된 글이 없습니다.
+								</div>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<form
-					action="/board/write"
-					method="POST"
-					className="board_form">
-					<div className="form_title">
-						<h2>title</h2>
-						<input type="text" name="title" />
-					</div>
-					<div className="form_content">
-						<h2>content</h2>
-						<textarea
-							name="content"
-							id="content"
-							cols="30"
-							rows="10"></textarea>
-					</div>
-					<div className="form_image">
-						<h2>image</h2>
-						<input type="file" name="img" />
-					</div>
-					<div className="form_stars">
-						<Stars />
-					</div>
-					<br />
-					<button type="submit">submit</button>
-				</form>
 			</div>
 		</>
 	);
-
 }
