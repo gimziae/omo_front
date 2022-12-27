@@ -1,10 +1,10 @@
 import React from "react";
 import Header from "../components/Header";
-import PopularArea from "../components/tour/PopularArea";
-import TourArea from "../components/tour/TourArea";
 import { Link } from "react-router-dom";
+import FoodPopularArea from "../components/food/FoodPopularArea";
+import FoodArea from "../components/food/FoodArea";
 
-export default function Tour() {
+export default function CultureMain() {
   return (
     <>
       <Header />
@@ -27,10 +27,8 @@ export default function Tour() {
           </li>
         </ul>
       </nav>
-      <div className="contentsWrap">
-        <PopularArea />
-        <TourArea />
-      </div>
+      <FoodPopularArea />
+      <FoodArea />
     </>
   );
 }
