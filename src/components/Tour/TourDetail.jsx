@@ -44,14 +44,39 @@ export default function TourDetail() {
 			});
 	}, []);
 
+	// 서버(isSaved true/false)
+
+	// 저장
+	// useEffect(() => {
+	// 	let method = "POST";
+	// 	if (save === undefined) {
+	// 		method = "DELETE";
+	// 	}
+	// 	fetch(url, {
+	// 		method,
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 			Authorization: localStorage.getItem("Token"),
+	// 		},
+	// 		body: JSON.stringify(save),
+	// 	})
+	// 		.then((res) => {
+	// 			return res.json();
+	// 		})
+	// 		.then((json) => {
+	// 			console.log(json.response.body.items.item);
+	// 			setData(json.response.body.items.item);
+	// 		});
+	// }, [save]);
+
 	return (
 		<>
 			<Header />
 			{/* 정보 불러오는 코드 */}
 			{console.log(data)}
 			{/* <h1>{data[0].homepage}</h1> */}
-			{/* <h1>{data[0].title}</h1> */}
-			{/* <p>{data[0].tel}</p> */}
+			<h1>{data[0]?.title}</h1>
+			<p>{data[0]?.tel}</p>
 			{console.log(image)}
 
 			{/* 이미지 불러오는 코드 */}

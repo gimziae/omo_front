@@ -13,43 +13,105 @@ const url = `https://apis.data.go.kr/B551011/KorService/areaBasedList?_type=json
 
 // &sigunguCode=${sggCd}
 export default function TourArea() {
-  const [query, setQuery] = useState("");
-  const [data, setData] = useState([]);
 
-  useEffect(() => {
-    fetch(url)
-      .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        console.log(json.response.body.items.item);
-        setData(json.response.body.items.item);
-      });
-  }, []);
+	const [query, setQuery] = useState("");
+	const [data, setData] = useState([]);
+	const [save, setSave] = useState();
+	const [savedList, setSavedList] = useState([]);
 
-  return (
-    <section className="tourArea">
-      <h1>
-        <span>#</span> 관광지
-      </h1>
+	// 불러오는
+	useEffect(() => {
+		fetch(url)
+			.then((res) => {
+				return res.json();
+			})
+			.then((json) => {
+				console.log(json.response.body.items.item);
+				setData(json.response.body.items.item);
+			});
+	}, []);
 
-      <div className="tabMenu">
-        <ul className="tabMenu">
-          <li onClick={() => setQuery("")}>전체</li>
-          <li onClick={() => setQuery("종로")}>종로구</li>
-          <li onClick={() => setQuery("강남")}>강남구</li>
-          <li onClick={() => setQuery("중구")}>중구</li>
-          <li onClick={() => setQuery("관악")}>관악구</li>
-          <li onClick={() => setQuery("서초")}>서초구</li>
-        </ul>
-      </div>
-      <div className="contents">
-        {data
-          .filter((data) => data.addr1.toLowerCase().includes(query))
-          .map((area) => (
-            <AreaCards area={area} key={area.contentid} />
-          ))}
-      </div>
-    </section>
-  );
+	// 저장
+	// useEffect(() => {
+	// 	let method = "POST";
+	// 	if (save === undefined) {
+	// 		method = "DELETE";
+	// 	}
+	// 	fetch(url, {
+	// 		method,
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 			Authorization: localStorage.getItem("Token"),
+	// 		},
+	// 		body: JSON.stringify(save),
+	// 	})
+	// 		.then((res) => {
+	// 			return res.json();
+	// 		})
+	// 		.then((json) => {
+	// 			console.log(json.response.body.items.item);
+	// 			setData(json.response.body.items.item);
+	// 		});
+	// }, [save]);
+
+	console.log(save);
+	console.log(savedList);
+
+	return (
+		<section className="tourArea">
+			<h1>
+				<span>#</span> 관광지
+			</h1>
+
+			<div className="tabMenu">
+				<ul className="tabMenu">
+					<li onClick={() => setQuery("")}>전체</li>
+					<li onClick={() => setQuery("종로")}>종로구</li>
+					<li onClick={() => setQuery("강남")}>강남구</li>
+					<li onClick={() => setQuery("중구")}>중구</li>
+					<li onClick={() => setQuery("관악")}>관악구</li>
+					<li onClick={() => setQuery("서초")}>서초구</li>
+				</ul>
+			</div>
+			<div className="contents">
+				{data
+					.filter((data) => data.addr1.toLowerCase().includes(query))
+					.map((area) => (
+						<AreaCards
+							area={area}
+							key={area.contentid}
+							isSaved={savedList.includes(area.contentid)}
+							onSave={
+								// save
+								// 	? setSave()
+								// 	: setSave({
+								// 			contentid: area.contentid,
+								// 			title: area.title,
+								// 			image: area.firstimage,
+								// 	  })
+								() => {
+									savedList.includes(area.contentid)
+										? setSavedList(
+												savedList.filter(
+													(list) =>
+														list !== area.contentid
+												)
+										  )
+										: setSavedList([
+												...savedList,
+												area.contentid,
+										  ]);
+									setSave({
+										contentid: area.contentid,
+										title: area.title,
+										image: area.firstimage,
+									});
+								}
+							}
+						/>
+					))}
+			</div>
+		</section>
+	);
+
 }

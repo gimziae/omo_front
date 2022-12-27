@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { save } from "../../redux/modules/area";
 
-const AreaCards = ({ area }) => {
+const AreaCards = ({ area, onSave, isSaved }) => {
 	const dispatch = useDispatch();
 
 	return (
@@ -23,11 +23,12 @@ const AreaCards = ({ area }) => {
 						alt="관광이미지"
 					/>
 				</div>
-				<div className="text">
-					<h2 className="title">{area.title}</h2>
-					<p className="address">{area.addr1}</p>
-				</div>
 			</Link>
+			<div className="text">
+				<h2 className="title">{area.title}</h2>
+				<button onClick={onSave}>{isSaved ? "삭제" : "저장"}</button>
+				<p className="address">{area.addr1}</p>
+			</div>
 		</div>
 	);
 };
