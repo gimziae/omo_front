@@ -2,10 +2,11 @@ import React from "react";
 import { BsFillBookmarkFill, BsFillHeartFill } from "react-icons/bs";
 
 import { useParams } from "react-router-dom";
-import Header from "../Header";
-import { useEffect, useState } from "react";
 
-export default function TourDetail() {
+import { useEffect, useState } from "react";
+import Header from "../Header";
+
+export default function DetailView() {
 	const [data, setData] = useState([]);
 	const [image, setImage] = useState([]);
 	let { contentid } = useParams();

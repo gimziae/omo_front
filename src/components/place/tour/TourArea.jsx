@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import AreaCards from "../tour_list/AreaCards";
-import { save } from "../../redux/modules/area";
+// import AreaCards from "./AreaCards";
+import { save } from "../../../redux/modules/area";
+import Card from "../Card";
 // import { useDispatch } from "react-redux";
 
 // 관광정보
-const key = "ooVIIXvB%2F%2F%2B6kPC1iOe5%2FArkuU5iefGXK4vuV228x6faKt32nsB1O%2BZCEVg8v3xcT6m9tvBLsprDfDjVs5gt3w%3D%3D";
+const key =
+	"ooVIIXvB%2F%2F%2B6kPC1iOe5%2FArkuU5iefGXK4vuV228x6faKt32nsB1O%2BZCEVg8v3xcT6m9tvBLsprDfDjVs5gt3w%3D%3D";
 const areaCd = 1; //서울시
 const sggCd = 3; //구로구
 const contentTypeId = 15;
@@ -13,7 +15,6 @@ const url = `https://apis.data.go.kr/B551011/KorService/areaBasedList?_type=json
 
 // &sigunguCode=${sggCd}
 export default function TourArea() {
-
 	const [query, setQuery] = useState("");
 	const [data, setData] = useState([]);
 	const [save, setSave] = useState();
@@ -31,34 +32,11 @@ export default function TourArea() {
 			});
 	}, []);
 
-	// 저장
-	// useEffect(() => {
-	// 	let method = "POST";
-	// 	if (save === undefined) {
-	// 		method = "DELETE";
-	// 	}
-	// 	fetch(url, {
-	// 		method,
-	// 		headers: {
-	// 			"Content-Type": "application/json",
-	// 			Authorization: localStorage.getItem("Token"),
-	// 		},
-	// 		body: JSON.stringify(save),
-	// 	})
-	// 		.then((res) => {
-	// 			return res.json();
-	// 		})
-	// 		.then((json) => {
-	// 			console.log(json.response.body.items.item);
-	// 			setData(json.response.body.items.item);
-	// 		});
-	// }, [save]);
-
 	console.log(save);
 	console.log(savedList);
 
 	return (
-		<section className="tourArea">
+		<section className="area tour">
 			<h1>
 				<span>#</span> 관광지
 			</h1>
@@ -77,7 +55,7 @@ export default function TourArea() {
 				{data
 					.filter((data) => data.addr1.toLowerCase().includes(query))
 					.map((area) => (
-						<AreaCards
+						<Card
 							area={area}
 							key={area.contentid}
 							isSaved={savedList.includes(area.contentid)}
@@ -113,5 +91,4 @@ export default function TourArea() {
 			</div>
 		</section>
 	);
-
 }

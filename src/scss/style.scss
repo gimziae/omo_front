@@ -57,11 +57,10 @@ body {
 
 // tour
 @import "./pages/tour";
-@import "./components/tour/popularArea";
-@import "./components/tour/tourArea";
-@import "./components/tour/popularArea";
-@import "./components//tour_list/areaCards";
-@import "./components/tour/tourDetail";
+@import "./components/place/popularArea";
+@import "./components/place/area";
+@import "./components/place/card";
+@import "./components/place/detail";
 // board
 @import "./pages/board/diary";
 @import "./pages/board/calendar";

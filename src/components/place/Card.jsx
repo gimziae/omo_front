@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { save } from "../../redux/modules/area";
 
-const AreaCards = ({ area, onSave, isSaved }) => {
+export default function Card({ area, onSave, isSaved }) {
 	const dispatch = useDispatch();
 
 	return (
 		<div
-			className="areaCard"
+			className="card"
 			onClick={() => {
 				dispatch(save(area));
 			}}>
@@ -31,6 +31,4 @@ const AreaCards = ({ area, onSave, isSaved }) => {
 			</div>
 		</div>
 	);
-};
-
-export default AreaCards;
+}

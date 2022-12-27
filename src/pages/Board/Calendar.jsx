@@ -102,6 +102,7 @@ export default function Calender() {
 		setSelectedDate(day);
 	};
 	console.log(new Date(selectedDate).getMonth() + 1);
+	console.log(new Date(selectedDate).getMonth() + 1);
 	return (
 		<div className="calendar">
 			<RenderHeader
