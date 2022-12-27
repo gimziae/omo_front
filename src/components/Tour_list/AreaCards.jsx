@@ -1,19 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../scss/components/tour_list/_areaCards.scss";
+import { useDispatch } from "react-redux";
+import { save } from "../../redux/modules/area";
 
 const AreaCards = ({ area }) => {
-  return (
-    <div className="areacard">
-      <Link to={`${area.id}`}>
-        <div className="image">
-          <img src={area.img} alt="관광이미지" />
-        </div>
-        <span className="areatext">{area.text}</span>
-        <span className="areatext2">서울시 강남구 oo동 oo번지</span>
-      </Link>
-    </div>
-  );
+	const dispatch = useDispatch();
+
+	return (
+		<div
+			className="areaCard"
+			onClick={() => {
+				dispatch(save(area));
+			}}>
+			<Link to={`${area.contentid}`}>
+				<div className="image">
+					<img
+						src={
+							area.firstimage === ""
+								? "/images/profile.jpeg"
+								: area.firstimage
+						}
+						alt="관광이미지"
+					/>
+				</div>
+				<div className="text">
+					<h2 className="title">{area.title}</h2>
+					<p className="address">{area.addr1}</p>
+				</div>
+			</Link>
+		</div>
+	);
 };
 
 export default AreaCards;
