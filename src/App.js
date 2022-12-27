@@ -20,24 +20,29 @@ import Calender from "./pages/board/Calendar";
 import TourDetail from "./components/tour/TourDetail";
 
 function App() {
-  return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/board" element={<UserBoard />} />
-        <Route path="/diary/1st" element={<Diary1st />} />
+
+	return (
+		<div className="App">
+			<Routes>
+				<Route path="/" element={<Main />} />
+				<Route path="/board" element={<UserBoard />} />
+
+                <Route path="/diary/1st" element={<Diary1st />} />
         <Route path="/diary/write" element={<Diary />} />
         <Route path="/diary/modify" element={<DiaryModify />} />
         <Route path="/calender" element={<Calendar />} />
 
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler />} />
-        <Route path="/tour" element={<Tour />} />
-        <Route path="/tour/:index" element={<TourDetail/>} />
-      </Routes>
-    </div>
-  );
+				<Route path="/register" element={<Register />} />
+				<Route path="/login" element={<Login />} />
+				{/* <Route
+					path="/oauth/callback/kakao"
+					element={<KakaoRedirectHandler />}
+				/> */}
+				<Route path="/tour" element={<Tour />} />
+				<Route path="/tour/:contentid" element={<TourDetail />} />
+			</Routes>
+		</div>
+	);
 
 }
 
