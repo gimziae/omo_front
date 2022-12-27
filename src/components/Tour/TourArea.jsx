@@ -4,8 +4,7 @@ import { save } from "../../redux/modules/area";
 // import { useDispatch } from "react-redux";
 
 // 관광정보
-const key =
-	"ooVIIXvB%2F%2F%2B6kPC1iOe5%2FArkuU5iefGXK4vuV228x6faKt32nsB1O%2BZCEVg8v3xcT6m9tvBLsprDfDjVs5gt3w%3D%3D";
+const key = "ooVIIXvB%2F%2F%2B6kPC1iOe5%2FArkuU5iefGXK4vuV228x6faKt32nsB1O%2BZCEVg8v3xcT6m9tvBLsprDfDjVs5gt3w%3D%3D";
 const areaCd = 1; //서울시
 const sggCd = 3; //구로구
 const contentTypeId = 15;
@@ -14,6 +13,7 @@ const url = `https://apis.data.go.kr/B551011/KorService/areaBasedList?_type=json
 
 // &sigunguCode=${sggCd}
 export default function TourArea() {
+
 	const [query, setQuery] = useState("");
 	const [data, setData] = useState([]);
 	const [save, setSave] = useState();
@@ -113,4 +113,5 @@ export default function TourArea() {
 			</div>
 		</section>
 	);
+
 }
