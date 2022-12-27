@@ -29,7 +29,7 @@ function App() {
 					element={<KakaoRedirectHandler />}
 				/> */}
 				<Route path="/tour" element={<Tour />} />
-				<Route path="/tour/:areaID" element={<TourDetail />} />
+				<Route path="/tour/:contentid" element={<TourDetail />} />
 			</Routes>
 		</div>
 	);
