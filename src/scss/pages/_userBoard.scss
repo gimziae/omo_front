@@ -4,19 +4,42 @@
     display: flex;
 
     .left {
-      border: 1px solid red;
-      h3 {
-        color: #c7c7c7;
-      }
+      border-right: 1px solid #ccc;
+      padding-right: 15px;
+
       .menu {
-        li {
-          cursor: pointer;
+        text-align: center;
+        h3 {
+          color: #ccc;
+        }
+        .nav {
+          display: flex;
+          flex-direction: column;
+          li {
+            cursor: pointer;
+            // background: rgba($color: $purple, $alpha: 0.4);
+            padding: inherit;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            // margin: 5px;
+            font-size: 24px;
+            color: #777;
+            &:active,
+            &:hover,
+            &:focus {
+              background: rgba($color: $purple, $alpha: 0.4);
+            }
+          }
         }
       }
     }
     .right {
-      border: 1px solid red;
       width: 100%;
+      padding: 1rem 2rem 10rem;
+      .show {
+        width: 100%;
+      }
     }
   }
 }
