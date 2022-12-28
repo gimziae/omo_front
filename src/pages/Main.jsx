@@ -1,14 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
+
 import Footer from "../components/Footer";
+
 import Header from "../components/Header";
 import Best from "../components/main/Best";
-import Intro from "../components/main/Intro";
+
 import Plan from "../components/main/Plan";
 import Popular from "../components/main/Popular";
 
 export default function Main() {
   const isLogin = useSelector((state) => state.user.isLogin);
+
 
   return (
     <>
@@ -25,4 +28,5 @@ export default function Main() {
       <Footer />
     </>
   );
+
 }
