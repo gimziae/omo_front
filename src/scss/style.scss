@@ -61,11 +61,10 @@ body {
 @import "./components/place/area";
 @import "./components/place/card";
 @import "./components/place/detail";
+
 // board
-@import "./pages/board/diary";
 @import "./pages/board/calendar";
 @import "./components/board/stars";
-@import "./components/board/profile";
 
 // pages
 @import "./pages/main";

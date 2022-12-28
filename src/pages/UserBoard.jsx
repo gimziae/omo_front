@@ -2,27 +2,29 @@ import React from "react";
 
 import Header from "../components/Header";
 import Profile from "../components/board/Profile";
-import Calender from "./board/Calendar";
-import Diary from "./board/Diary";
+import Calendar from "./board/Calendar";
+import SaveList from "./board/SaveList";
 import { useState } from "react";
+import styled from "styled-components";
 
 const menuList = [
 	{
 		id: 0,
 		name: "일정",
-		componentName: "calendar",
-		component: <Calender />,
+		componentName: "show calendarView",
+		component: <Calendar />,
 	},
 	{
 		id: 1,
-		name: "다이어리",
-		componentName: "diary",
-		component: <Diary />,
+		name: "저장목록",
+		componentName: "show saveList",
+		component: <SaveList />,
 	},
 ];
 
 export default function UserBoard() {
 	const [index, setIndex] = useState(0);
+
 	return (
 		<>
 			<Header />
@@ -31,17 +33,22 @@ export default function UserBoard() {
 					<div className="left">
 						<Profile />
 						<hr />
-						<h3>MENU</h3>
-						<ul className="menu">
-							{menuList.map((item) => (
-								<li
-									key={item.id}
-									className={item.componentName}
-									onClick={() => setIndex(item.id)}>
-									- {item.name}
-								</li>
-							))}
-						</ul>
+						<div className="menu">
+							{" "}
+							<h3>MENU</h3>
+							<ul className="nav">
+								{menuList.map((item) => (
+									<li
+										key={item.id}
+										className={item.componentName}
+										onClick={() => {
+											setIndex(item.id);
+										}}>
+										{item.name}
+									</li>
+								))}
+							</ul>
+						</div>
 					</div>
 					<div className="right">
 						{menuList

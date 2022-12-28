@@ -1,33 +1,50 @@
 import React from "react";
+import styled from "styled-components";
+
+const ProfileDiv = styled.div`
+	width: 300px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+`;
+
+const ProfileImg = styled.div`
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin-bottom: 15px;
+`;
+const Img = styled.img`
+	width: 100%;
+	height: 100%;
+`;
+const UserName = styled.h2`
+	font-size: 18px;
+	letter-spacing: 1px;
+	color: #999;
+	strong {
+		color: yellowgreen;
+		font-size: 24px;
+	}
+`;
 
 export default function Profile() {
 	return (
 		<>
-			<div className="profile">
-				<div className="profile_img">
-					<img src="/images/profile.jpeg" alt="기본 프로필" />
-				</div>
+			<ProfileDiv>
+				<ProfileImg>
+					<Img
+						src="//source.unsplash.com/500x503/?disney"
+						alt="기본 프로필"
+					/>
+				</ProfileImg>
 
-				<h2 className="name">user name</h2>
-
-				{/* <div className="borderline">
-					<div className="profile_img">
-						<img src="/images/profile.jpeg" alt="기본 프로필" />
-					</div>
-				</div>
-				<div className="info">
-					<h1 className="name">user name</h1>
-					{/* <p>한줄 소개를 </p>
-					<h5 className="hashtag">
-						<span>#강동</span>
-						<span>#강서</span>
-						<span>#강남</span>
-						<span>#강북</span>
-					</h5>
-					<a href="링크 주소 입력">INSTAGRAM</a> |{" "}
-					<a href="링크 주소 입력">FACEBOOK</a> 
-				</div> */}
-			</div>
+				<UserName>
+					<strong>{localStorage.getItem("name")}</strong>'s PAGE
+				</UserName>
+			</ProfileDiv>
 		</>
 	);
 }
