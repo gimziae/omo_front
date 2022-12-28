@@ -7,8 +7,8 @@ import { useState } from "react";
 // 관광정보
 const key = "ooVIIXvB%2F%2F%2B6kPC1iOe5%2FArkuU5iefGXK4vuV228x6faKt32nsB1O%2BZCEVg8v3xcT6m9tvBLsprDfDjVs5gt3w%3D%3D";
 const areaCd = 1; //서울시
-const sggCd = 7; //구로구
-const contentTypeId = 12;
+const sggCd = 1; //구로구
+const contentTypeId = 39;
 const url = `https://apis.data.go.kr/B551011/KorService/areaBasedList?_type=json&serviceKey=${key}&pageNo=1&numOfRows=10&MobileApp=AppTest&MobileOS=ETC&arrange=A&contentTypeId=${contentTypeId}&areaCode=${areaCd}&sigunguCode=${sggCd}
 `;
 
@@ -16,11 +16,13 @@ export default function FoodPopularArea() {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    autoplay: true,
+    pauseOnHover: true,
+    speed: 2500,
     arrow: true,
     draggable: true,
-    slidesToShow: 3,
-    slidesToScroll: 2,
+    slidesToShow: 2,
+    slidesToScroll: 1,
     initialSlide: 0,
     // prevArrow: "<button type='button' class='slick-prev'>Previous</button>", // 이전 화살표 모양 설정
     // nextArrow: "<button type='button' class='slick-next'>Next</button>", // 다음 화살표 모양 설정
@@ -68,7 +70,7 @@ export default function FoodPopularArea() {
   return (
     <section className="popularArea">
       <h1 className="todayPlace">
-        OMO가 추천하는 <span># 서울 음식점</span>
+        OMO가 추천하는 <span># 서울 다이닝</span>
       </h1>
       <div className="sliderWrap">
         <Slider {...settings}>
