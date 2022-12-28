@@ -7,7 +7,7 @@ import { useState } from "react";
 // 관광정보
 const key = "ooVIIXvB%2F%2F%2B6kPC1iOe5%2FArkuU5iefGXK4vuV228x6faKt32nsB1O%2BZCEVg8v3xcT6m9tvBLsprDfDjVs5gt3w%3D%3D";
 const areaCd = 1; //서울시
-const sggCd = 13; //구로구
+const sggCd = 5; //구로구
 const contentTypeId = 12;
 const url = `https://apis.data.go.kr/B551011/KorService/areaBasedList?_type=json&serviceKey=${key}&pageNo=1&numOfRows=10&MobileApp=AppTest&MobileOS=ETC&arrange=A&contentTypeId=${contentTypeId}&areaCode=${areaCd}&sigunguCode=${sggCd}
 `;
