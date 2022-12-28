@@ -1,6 +1,42 @@
 #best {
-    border: 1px solid black;
+    // border: 1px solid black;
     width: 100%;
-    padding: 1em 2em;
+    padding: 1em 1em;
     margin-bottom: 30px;
+
+    .moreContainer {
+        display: flex;
+        gap: 20px;
+        > div {
+            height: 300px;
+            border: 1px solid #ccc;
+            background-color: #111;
+            position: relative;
+            a {
+                opacity: 0.8;
+                &:hover {
+                    opacity: 1;
+                }
+                .img {
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+            span {
+                position: absolute;
+                left: 1.5em;
+                bottom: 1em;
+                font-size: 1.1em;
+                font-weight: 500;
+                letter-spacing: 1px;
+                color: white;
+            }
+        }
+    }
 }
