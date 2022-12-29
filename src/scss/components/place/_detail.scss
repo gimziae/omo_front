@@ -1,36 +1,94 @@
-h1 {
-  text-align: center;
-}
+.detailView {
+  position: relative;
+  padding: 2em 5em;
+  margin: 0 auto;
 
-.introduce {
-  padding: 20px 50px;
-  display: flex;
-  gap: 50px;
-
-  .left {
+  .sectionWrap {
+    width: 100%;
     display: flex;
-    flex: 1;
-  }
-
-  .right {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    gap: 25px;
-
-    p {
-      font-size: 18px;
-      text-align: justify;
-    }
-
-    .icons {
+    flex-wrap: wrap;
+    .placeInfo {
+      width: 100%;
+      height: 500px;
+      position: relative;
       display: flex;
-      gap: 20px;
+      justify-content: space-between;
+      align-items: flex-start;
+      .placeImg {
+        width: 50%;
+        height: 100%;
+        padding: 2em;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .infoContents {
+        width: 50%;
+        padding: 2em 1em;
+        position: relative;
 
-      .item {
-        display: flex;
-        align-items: center;
-        gap: 5px;
+        .inner {
+          width: 100%;
+          border: 1px solid #ccc;
+          padding: 2em 2.5em;
+          .infoText {
+            padding: 0;
+            li {
+              font-size: 16px;
+              color: #777;
+              padding: 5px 0;
+              &.placeTitle {
+                font-weight: bold;
+                font-size: 30px;
+                letter-spacing: 2px;
+                margin-bottom: 0.5em;
+                text-indent: 1em;
+                color: #555;
+              }
+              a {
+                color: #777;
+              }
+              svg {
+                margin-right: 10px;
+                width: 1.2em;
+                height: 1.2em;
+                color: $purple;
+              }
+            }
+          }
+          .shareBookmark {
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 2em;
+
+            li {
+              cursor: pointer;
+              &:first-child {
+                border-right: 1px solid #999;
+              }
+              svg {
+                width: 1.5em;
+                height: 1.5em;
+                margin: 0 1.2em;
+                color: #777;
+              }
+            }
+          }
+        }
+      }
+    }
+    .placeImgMore {
+      width: 100%;
+      position: relative;
+      // border: 3px solid dodgerblue;
+      > .inner {
+        padding: 2em;
+        width: 100%;
       }
     }
   }
