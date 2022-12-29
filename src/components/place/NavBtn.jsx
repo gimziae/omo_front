@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 const Nav = styled.nav`
 	ul {
@@ -38,8 +38,6 @@ const Nav = styled.nav`
 `;
 
 export default function NavBtn() {
-	let { location } = useLocation();
-	console.log(window.location.pathname);
 	return (
 		<>
 			<Nav>

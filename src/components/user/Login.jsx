@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 // component
 import Header from "../Header";
+import Footer from "../Footer";
 
 // react hook
 import React, { useRef } from "react";
@@ -100,6 +101,7 @@ export default function Login() {
 					</div>
 				</div>
 			</div>
+			<Footer />
 		</>
 	);
 }

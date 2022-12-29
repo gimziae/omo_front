@@ -28,7 +28,6 @@ export default function Card({ area, onSave, isSaved }) {
 			</Link>
 			<div className="text">
 				<h2 className="title">{area.title}</h2>
-				<button onClick={onSave}>{isSaved ? "삭제" : "저장"}</button>
 				<p className="address">{area.addr1}</p>
 			</div>
 		</div>

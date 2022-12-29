@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { MdDeleteOutline } from "react-icons/md";
+import { RiArrowGoBackLine } from "react-icons/ri";
+import { MdDeleteOutline, MdSaveAlt } from "react-icons/md";
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 import { CiEdit } from "react-icons/ci";
 import { format, addMonths, subMonths } from "date-fns";
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from "date-fns";
 import { isSameMonth, isSameDay, addDays } from "date-fns";
 import { useRef } from "react";
+import { json } from "react-router-dom";
 
 // 연도 , 월
 const RenderHeader = ({ currentMonth, prevMonth, nextMonth }) => {
@@ -101,41 +103,116 @@ const RenderCells = ({ currentMonth, selectedDate, onDateClick }) => {
 export default function Calendar() {
 	const [currentMonth, setCurrentMonth] = useState(new Date());
 	const [selectedDate, setSelectedDate] = useState(new Date());
+	const [savedScheduleList, setSavedShceduleList] = useState([]);
+	const [render, setRender] = useState(false);
+	const [modifyMode, setModifyMode] = useState(false);
+
+	// 새로운 일정 입력받은 인풋값
 	const inputDate = useRef();
 	const inputTitle = useRef();
 	const inputContent = useRef();
 
+	// 생성된 일정 수정한 인풋값
+	const modifyInputTitle = useRef();
+	const modifyInputContent = useRef();
+
+	// 서버 endpoint
+	const scheduleURL = "http://localhost:4000/board/schedule";
+	const scheduleListURL = "http://localhost:4000/board/schedules";
+
+	// 저장목록 데이터 불러오기
+	useEffect(() => {
+		fetch(scheduleListURL, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: localStorage.getItem("Token"),
+			},
+		})
+			.then((res) => res.json())
+			.then((json) => {
+				console.log(json);
+				if (json.schedules) {
+					setSavedShceduleList(json.schedules);
+				} else {
+					alert("데이타 로드 실패");
+				}
+			});
+	}, [render]);
+
 	// 일정 저장하는 함수
 	async function saveTodo() {
-		const todoInfo = {
-			date: inputDate,
-			title: inputTitle,
-			content: inputContent,
-			creator: localStorage.getItem("name"),
+		const todoInput = {
+			date: inputDate.current.value,
+			title: inputTitle.current.value,
+			content: inputContent.current.value,
 		};
 
-		if (todoInfo.date !== "" && todoInfo.title !== "") {
-			const saveResponse = await fetch("endpoint", {
+		if (todoInput.title !== "" && todoInput.content !== "") {
+			const saveTodoResponse = await fetch(scheduleURL, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 					Authorization: localStorage.getItem("Token"),
 				},
-				body: JSON.stringify(todoInfo),
+				body: JSON.stringify(todoInput),
 			});
-			if (saveResponse.status === 201) {
-				const result = await saveResponse.json();
-				if (result) {
-				}
+			if (saveTodoResponse.status === 201) {
+				const saveTodoResult = await saveTodoResponse.json();
+				console.log(saveTodoResult);
+				alert("일정 저장 완료");
+				setRender(!render);
 			}
 		} else {
-			alert("제목을 입력해 주세요.");
+			alert("제목과 내용을 입력해 주세요.");
+		}
+	}
+	// 일정 삭제하는 함수
+	async function deleteSchedule(id) {
+		const deleteScheduleResponse = await fetch(scheduleURL, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: localStorage.getItem("Token"),
+			},
+			body: JSON.stringify({
+				_id: id,
+			}),
+		});
+
+		if (deleteScheduleResponse.status === 201) {
+			const deleteScheduleResult = await deleteScheduleResponse.json();
+			alert("일정 삭제 완료");
+			setRender(!render);
+		} else {
+			alert("서버 통신 이상");
 		}
 	}
 
-	// 일정 불러오는 함수
-	async function loadTodo() {}
+	// 일정 수정하는 함수
+	async function modifySchedule(id) {
+		setModifyMode(!modifyMode);
+		const modifyContents = {
+			title: modifyInputTitle.current.value,
+			content: modifyInputContent.current.value,
+			date: "수정할 시간",
+			_id: id,
+		};
+		const modifyContentResponse = await fetch(scheduleURL, {
+			method: "PATCH",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: localStorage.getItem("Token"),
+			},
+			body: JSON.stringify(modifyContents),
+		});
+		if (modifyContentResponse.status === 201) {
+		} else {
+			alert("서버 통신 이상");
+		}
+	}
 
+	// 날짜 설정
 	const prevMonth = () => {
 		setCurrentMonth(subMonths(currentMonth, 1));
 	};
@@ -185,49 +262,72 @@ export default function Calendar() {
 						placeholder="장소"
 					/>
 					<br />
-					<button onClick={() => saveTodo()} className="saveBtn">
+					<button onClick={saveTodo} className="saveBtn">
 						저장
 					</button>
 				</div>
 			</div>
 			<div className="todoList">
 				<ul className="savedList">
-					<li>
-						<p className="date">2022.12.30</p>
-						<div className="contents">
-							<h3>일정 제목</h3>
+					{savedScheduleList.map((item, index) => {
+						console.log(item);
+						return (
+							<li key={index}>
+								<p className="date">{item.createdAt}</p>
+								<div className="contents">
+									{modifyMode ? (
+										<>
+											<input
+												placeholder={item.title}
+												ref={modifyInputTitle}
+											/>
+											<br />
+											<input
+												placeholder={item.content}
+												ref={modifyInputContent}
+											/>
+										</>
+									) : (
+										<>
+											<h3>{item.title}</h3>
+											<p>{item.content}</p>
+										</>
+									)}
+								</div>
 
-							<p>일정 내용 내용내용낸용내요ㅐ뇨애 장소 등</p>
-						</div>
-
-						<div className="btnWrap">
-							<span className="creator">작성자이름</span>
-							<button className="modify">
-								<CiEdit />
-							</button>{" "}
-							<button className="delete">
-								<MdDeleteOutline />
-							</button>
-						</div>
-					</li>
-					<li>
-						<p className="date">2022.12.30</p>
-						<div className="contents">
-							<h3>일정 제목</h3>
-
-							<p>일정 내용 내용내용낸용내요ㅐ뇨애 장소 등</p>
-						</div>
-
-						<div className="btnWrap">
-							<span className="creator">작성자이름</span>
-							<button className="modify">
-								<CiEdit />
-							</button>{" "}
-							<button className="delete">
-								<MdDeleteOutline />
-							</button>
-						</div>
-					</li>
+								<div className="btnWrap">
+									{modifyMode ? (
+										<>
+											<button className="back">
+												{/* onClick={setModifyMode(
+														false
+													)} */}
+												<RiArrowGoBackLine />
+											</button>
+											<button className="save">
+												<MdSaveAlt />
+											</button>
+										</>
+									) : (
+										<>
+											<button className="modify">
+												<CiEdit
+													onClick={modifySchedule}
+												/>
+											</button>{" "}
+											<button className="delete">
+												<MdDeleteOutline
+													onClick={() =>
+														deleteSchedule(item._id)
+													}
+												/>
+											</button>
+										</>
+									)}
+								</div>
+							</li>
+						);
+					})}
 				</ul>
 			</div>
 		</>

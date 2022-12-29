@@ -27,13 +27,13 @@ export default function TourArea() {
 				return res.json();
 			})
 			.then((json) => {
-				console.log(json.response.body.items.item);
+				// console.log(json.response.body.items.item);
 				setData(json.response.body.items.item);
 			});
 	}, []);
 
-	console.log(save);
-	console.log(savedList);
+	// console.log(save);
+	// console.log(savedList);
 
 	return (
 		<section className="area tour">

@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../Header";
+import Footer from "../Footer";
 
 export default function Register() {
 	const userIdInput = useRef();
@@ -80,6 +81,7 @@ export default function Register() {
 					</div>
 				</div>
 			</div>
+			<Footer />
 		</>
 	);
 }

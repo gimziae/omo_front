@@ -178,9 +178,17 @@
         font-size: 16px;
       }
       .contents {
+        // 보여주기
         > h3 {
           font-size: 25px;
           color: #555;
+        }
+
+        // 수정모드
+        input {
+          padding: 0.5em;
+          width: 70%;
+          margin: 10px;
         }
       }
 

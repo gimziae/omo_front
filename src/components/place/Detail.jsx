@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 export default function Detail() {
 	const [data, setData] = useState([]);
 	const [image, setImage] = useState([]);
+	const [isSaved, setIsSaved] = useState(false);
 	let { contentid } = useParams();
 	const location = useLocation();
 	const state = location.state;
@@ -30,6 +31,7 @@ export default function Detail() {
 	// 이미지 불러오기
 	const imgURL = `http://apis.data.go.kr/B551011/KorService/detailImage?_type=json&serviceKey=${key}&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&contentId=${contentid}&subImageYN=Y`;
 
+	const bookmarkURL = `http://localhost:4000/board/place/${contentid}`;
 	// 정보 불러오기
 	useEffect(() => {
 		fetch(infoURL)
@@ -40,10 +42,6 @@ export default function Detail() {
 				console.log(json.response.body.items.item);
 				setData(json.response.body.items.item);
 			});
-	}, []);
-
-	// 이미지 불러오기
-	useEffect(() => {
 		fetch(imgURL)
 			.then((res) => {
 				return res.json();
@@ -52,7 +50,66 @@ export default function Detail() {
 				console.log(json.response.body.items.item);
 				setImage(json.response.body.items.item);
 			});
+		fetch(bookmarkURL, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: localStorage.getItem("Token"),
+			},
+		})
+			.then((res) => res.json())
+			.then((json) => {
+				if (json.message === "found saved place") {
+					setIsSaved(true);
+				}
+			});
 	}, []);
+
+	async function savePlace() {
+		const savePlaceURL = "http://localhost:4000/board/place";
+		const savePlaceResponse = await fetch(savePlaceURL, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: localStorage.getItem("Token"),
+			},
+			body: JSON.stringify({
+				placeId: contentid,
+				placeName: placeTitle,
+			}),
+		});
+
+		if (savePlaceResponse.status === 201) {
+			const savePlaceResult = await savePlaceResponse.json();
+			alert("북마크 저장 완료");
+			setIsSaved(true);
+		} else {
+			alert("서버 통신 이상");
+		}
+	}
+	async function deletePlace() {
+		const deletePlaceResponse = await fetch(
+			"http://localhost:4000/board/place",
+			{
+				method: "DELETE",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: localStorage.getItem("Token"),
+				},
+				body: JSON.stringify({
+					placeId: contentid,
+				}),
+			}
+		);
+
+		if (deletePlaceResponse.status === 201) {
+			const deletePlaceResult = await deletePlaceResponse.json();
+			alert("북마크 삭제 완료");
+			setIsSaved(false);
+		} else {
+			alert("서버 통신 이상");
+		}
+	}
 
 	// 서버(isSaved true/false)
 
@@ -134,8 +191,16 @@ export default function Detail() {
 								</ul>
 								<ul className="shareBookmark">
 									<li>
-										<BsBookmark />
+										{isSaved ? (
+											<BsFillBookmarkFill
+												onClick={deletePlace}
+											/>
+										) : (
+											<BsBookmark onClick={savePlace} />
+										)}
+
 										{/* save 값이 있다면 <BsFillBookmarkFill /> 없다면 <BsBookmark />*/}
+										{/* ex> 				<button onClick={onSave}>{isSaved ? "삭제" : "저장"}</button> */}
 									</li>
 									<li>
 										<BsFillShareFill />

@@ -23,7 +23,7 @@ export default function FoodArea() {
 				return res.json();
 			})
 			.then((json) => {
-				console.log(json.response.body.items.item);
+				// console.log(json.response.body.items.item);
 				setData(json.response.body.items.item);
 			});
 	}, []);
