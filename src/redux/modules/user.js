@@ -37,7 +37,7 @@ export default function user(state = initState, action) {
 			//
 			window.localStorage.setItem("user", action.payload.email);
 			window.localStorage.setItem("name", action.payload.name);
-			localStorage.setItem("Token", action.payload.token);
+			localStorage.setItem("Token", `Bearer ${action.payload.token}`);
 			return {
 				...state,
 				email: action.payload.email,

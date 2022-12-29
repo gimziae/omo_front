@@ -1,7 +1,6 @@
 import React from "react";
 import {
 	BsFillBookmarkFill,
-	BsFillHeartFill,
 	BsFillTelephoneFill,
 	BsFillShareFill,
 	BsMapFill,
@@ -9,7 +8,7 @@ import {
 } from "react-icons/bs";
 import { IoMdHome } from "react-icons/io";
 
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 
@@ -17,8 +16,10 @@ export default function Detail() {
 	const [data, setData] = useState([]);
 	const [image, setImage] = useState([]);
 	const [isSaved, setIsSaved] = useState(false);
+
 	let { contentid } = useParams();
 	const location = useLocation();
+
 	const state = location.state;
 	console.log(location.state);
 	// 관광정보 API
@@ -76,13 +77,17 @@ export default function Detail() {
 			body: JSON.stringify({
 				placeId: contentid,
 				placeName: placeTitle,
+				imageUrl: placeImg,
 			}),
 		});
 
 		if (savePlaceResponse.status === 201) {
 			const savePlaceResult = await savePlaceResponse.json();
-			alert("북마크 저장 완료");
-			setIsSaved(true);
+
+			if (savePlaceResult) {
+				alert("북마크 저장 완료");
+				setIsSaved(true);
+			}
 		} else {
 			alert("서버 통신 이상");
 		}
@@ -104,37 +109,14 @@ export default function Detail() {
 
 		if (deletePlaceResponse.status === 201) {
 			const deletePlaceResult = await deletePlaceResponse.json();
-			alert("북마크 삭제 완료");
-			setIsSaved(false);
+			if (deletePlaceResult) {
+				alert("북마크 삭제 완료");
+				setIsSaved(false);
+			}
 		} else {
 			alert("서버 통신 이상");
 		}
 	}
-
-	// 서버(isSaved true/false)
-
-	// 저장
-	// useEffect(() => {
-	// 	let method = "POST";
-	// 	if (save === undefined) {
-	// 		method = "DELETE";
-	// 	}
-	// 	fetch(url, {
-	// 		method,
-	// 		headers: {
-	// 			"Content-Type": "application/json",
-	// 			Authorization: localStorage.getItem("Token"),
-	// 		},
-	// 		body: JSON.stringify(save),
-	// 	})
-	// 		.then((res) => {
-	// 			return res.json();
-	// 		})
-	// 		.then((json) => {
-	// 			console.log(json.response.body.items.item);
-	// 			setData(json.response.body.items.item);
-	// 		});
-	// }, [save]);
 
 	console.log(data); // 정보
 	console.log(image); // 이미지
@@ -156,7 +138,14 @@ export default function Detail() {
 				<div className="sectionWrap">
 					<div className="placeInfo">
 						<div className="placeImg">
-							<img src={placeImg} alt="장소 이미지" />
+							{placeImg !== "" ? (
+								<img src={placeImg} alt="장소 이미지" />
+							) : (
+								<img
+									src="/images/noimg.png"
+									alt="이미지 없음"
+								/>
+							)}
 						</div>
 						<div
 							className="infoContents

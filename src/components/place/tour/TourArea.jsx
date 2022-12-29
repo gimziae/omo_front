@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
-// import AreaCards from "./AreaCards";
-import { save } from "../../../redux/modules/area";
 import Card from "../Card";
-// import { useDispatch } from "react-redux";
 
 // 관광정보
 const key =
 	"ooVIIXvB%2F%2F%2B6kPC1iOe5%2FArkuU5iefGXK4vuV228x6faKt32nsB1O%2BZCEVg8v3xcT6m9tvBLsprDfDjVs5gt3w%3D%3D";
 const areaCd = 1; //서울시
-const sggCd = 3; //구로구
+// const sggCd = 3; //구로구
 const contentTypeId = 15;
 const url = `https://apis.data.go.kr/B551011/KorService/areaBasedList?_type=json&serviceKey=${key}&pageNo=1&numOfRows=20&MobileApp=AppTest&MobileOS=ETC&arrange=A&contentTypeId=${contentTypeId}&areaCode=${areaCd}
 `;
@@ -59,33 +56,24 @@ export default function TourArea() {
 							area={area}
 							key={area.contentid}
 							isSaved={savedList.includes(area.contentid)}
-							onSave={
-								// save
-								// 	? setSave()
-								// 	: setSave({
-								// 			contentid: area.contentid,
-								// 			title: area.title,
-								// 			image: area.firstimage,
-								// 	  })
-								() => {
-									savedList.includes(area.contentid)
-										? setSavedList(
-												savedList.filter(
-													(list) =>
-														list !== area.contentid
-												)
-										  )
-										: setSavedList([
-												...savedList,
-												area.contentid,
-										  ]);
-									setSave({
-										contentid: area.contentid,
-										title: area.title,
-										image: area.firstimage,
-									});
-								}
-							}
+							onSave={() => {
+								savedList.includes(area.contentid)
+									? setSavedList(
+											savedList.filter(
+												(list) =>
+													list !== area.contentid
+											)
+									  )
+									: setSavedList([
+											...savedList,
+											area.contentid,
+									  ]);
+								setSave({
+									contentid: area.contentid,
+									title: area.title,
+									image: area.firstimage,
+								});
+							}}
 						/>
 					))}
 			</div>

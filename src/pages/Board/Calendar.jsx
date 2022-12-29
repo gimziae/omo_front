@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
+// icons
 import { RiArrowGoBackLine } from "react-icons/ri";
 import { MdDeleteOutline, MdSaveAlt } from "react-icons/md";
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 import { CiEdit } from "react-icons/ci";
+
+// 날짜 가져오는 모듈(date-fns)
 import { format, addMonths, subMonths } from "date-fns";
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from "date-fns";
 import { isSameMonth, isSameDay, addDays } from "date-fns";
-import { useRef } from "react";
-import { json } from "react-router-dom";
 
 // 연도 , 월
 const RenderHeader = ({ currentMonth, prevMonth, nextMonth }) => {
@@ -105,7 +106,7 @@ export default function Calendar() {
 	const [selectedDate, setSelectedDate] = useState(new Date());
 	const [savedScheduleList, setSavedShceduleList] = useState([]);
 	const [render, setRender] = useState(false);
-	const [modifyMode, setModifyMode] = useState(false);
+	const [modifyMode, setModifyMode] = useState([]);
 
 	// 새로운 일정 입력받은 인풋값
 	const inputDate = useRef();
@@ -134,8 +135,13 @@ export default function Calendar() {
 				console.log(json);
 				if (json.schedules) {
 					setSavedShceduleList(json.schedules);
+					const modifyModeArr = [];
+					for (let i = 0; i < json.schedules.length; i++) {
+						modifyModeArr.push(false);
+					}
+					setModifyMode(modifyModeArr);
 				} else {
-					alert("데이타 로드 실패");
+					alert("데이터 로드 실패");
 				}
 			});
 	}, [render]);
@@ -143,11 +149,11 @@ export default function Calendar() {
 	// 일정 저장하는 함수
 	async function saveTodo() {
 		const todoInput = {
-			date: inputDate.current.value,
+			date: selectedDate,
 			title: inputTitle.current.value,
 			content: inputContent.current.value,
 		};
-
+		// console.log(inputDate.current.value);
 		if (todoInput.title !== "" && todoInput.content !== "") {
 			const saveTodoResponse = await fetch(scheduleURL, {
 				method: "POST",
@@ -182,8 +188,10 @@ export default function Calendar() {
 
 		if (deleteScheduleResponse.status === 201) {
 			const deleteScheduleResult = await deleteScheduleResponse.json();
-			alert("일정 삭제 완료");
-			setRender(!render);
+			if (deleteScheduleResult) {
+				alert("일정 삭제 완료");
+				setRender(!render);
+			}
 		} else {
 			alert("서버 통신 이상");
 		}
@@ -191,11 +199,10 @@ export default function Calendar() {
 
 	// 일정 수정하는 함수
 	async function modifySchedule(id) {
-		setModifyMode(!modifyMode);
 		const modifyContents = {
-			title: modifyInputTitle.current.value,
-			content: modifyInputContent.current.value,
-			date: "수정할 시간",
+			title: modifyInputTitle.current?.value,
+			content: modifyInputContent.current?.value,
+			// date: "수정할 시간",
 			_id: id,
 		};
 		const modifyContentResponse = await fetch(scheduleURL, {
@@ -206,7 +213,12 @@ export default function Calendar() {
 			},
 			body: JSON.stringify(modifyContents),
 		});
+		console.log(modifyContentResponse);
 		if (modifyContentResponse.status === 201) {
+			alert("일정 수정 완료");
+
+			setModifyMode(false);
+			setRender(!render);
 		} else {
 			alert("서버 통신 이상");
 		}
@@ -246,6 +258,7 @@ export default function Calendar() {
 						<strong>{format(selectedDate, "M")}</strong>월{" "}
 						<strong>{format(selectedDate, "dd")}</strong>일
 					</p>
+
 					<input
 						ref={inputTitle}
 						type="text"
@@ -273,9 +286,11 @@ export default function Calendar() {
 						console.log(item);
 						return (
 							<li key={index}>
-								<p className="date">{item.createdAt}</p>
+								<p className="date">
+									{item.date?.substr(0, 10)}
+								</p>
 								<div className="contents">
-									{modifyMode ? (
+									{modifyMode[index] ? (
 										<>
 											<input
 												placeholder={item.title}
@@ -296,26 +311,49 @@ export default function Calendar() {
 								</div>
 
 								<div className="btnWrap">
-									{modifyMode ? (
+									{modifyMode[index] ? (
 										<>
 											<button className="back">
-												{/* onClick={setModifyMode(
-														false
-													)} */}
-												<RiArrowGoBackLine />
+												{/* 뒤로가기 버튼 */}
+												<RiArrowGoBackLine
+													onClick={() => {
+														const copyArr = [
+															...modifyMode,
+														];
+														copyArr[index] = false;
+														setModifyMode(copyArr);
+													}}
+												/>
 											</button>
 											<button className="save">
-												<MdSaveAlt />
+												{/* 수정 저장하기 버튼 */}
+												<MdSaveAlt
+													onClick={() =>
+														modifySchedule(item._id)
+													}
+												/>
 											</button>
 										</>
 									) : (
 										<>
 											<button className="modify">
+												{/* 수정모드로 가기 버튼 */}
 												<CiEdit
-													onClick={modifySchedule}
+													onClick={() => {
+														const copyArr = [
+															...modifyMode,
+														];
+														copyArr[index] = true;
+														console.log(
+															"copyArr",
+															copyArr
+														);
+														setModifyMode(copyArr);
+													}}
 												/>
-											</button>{" "}
+											</button>
 											<button className="delete">
+												{/* 삭제하기 버튼 */}
 												<MdDeleteOutline
 													onClick={() =>
 														deleteSchedule(item._id)

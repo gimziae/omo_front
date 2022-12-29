@@ -1,46 +1,13 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { BsTrash, BsPlusSquare } from "react-icons/bs";
+
+import { BiBookmarkPlus } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
-const CardSectionDiv = styled.div`
-	width: 100%;
-
-	.row {
-		width: 100%;
-		display: flex;
-		gap: 15px;
-		.card {
-			width: 200px;
-		}
-		.add {
-			border: none;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-
-			a {
-				width: 100%;
-				height: 100%;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				svg {
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					width: 80%;
-					height: 80%;
-					color: #bbb;
-				}
-			}
-		}
-	}
-`;
 const savedListURL = "http://localhost:4000/board/places";
 
 export default function SaveList() {
 	const [savedList, setSavedList] = useState([]);
+
 	// 저장목록 데이터 불러오기
 	useEffect(() => {
 		fetch(savedListURL, {
@@ -55,39 +22,45 @@ export default function SaveList() {
 				if (json.message === "saved places") {
 					setSavedList(json.savedPlaces);
 				} else {
-					alert("데이타 로드 실패");
+					alert("데이터 로드 실패");
 				}
 			});
 	}, []);
 
 	return (
 		<>
-			<CardSectionDiv>
-				<div className="row g-1">
-					{" "}
-					<div className="card col-3 add">
+			<section className="saveList">
+				<div className="row">
+					<div className="add col-2">
 						<Link to="/tour">
-							<BsPlusSquare />
+							<BiBookmarkPlus />
+							<h3>더 보러가기</h3>
 						</Link>
-						<h3>더 보기</h3>
 					</div>
 					{savedList.map((item, index) => {
+						console.log(item);
 						return (
-							<div className="card col-3">
-								<div className="card-body">
-									<h5 className="card-title">
-										{item.placeName}
-									</h5>
-									<p className="card-text">placeContent</p>
-									<button>
-										<BsTrash />
-									</button>
+							<div className="savedPlace col-3" key={index}>
+								<div className="img">
+									{item.imageUrl ? (
+										<img
+											src={item.imageUrl}
+											alt={item.placeName}
+										/>
+									) : (
+										<img
+											src="/images/noimg.png"
+											alt="이미지 미제공"
+										/>
+									)}
 								</div>
+
+								<h5 className="card-title">{item.placeName}</h5>
 							</div>
 						);
 					})}
 				</div>
-			</CardSectionDiv>
+			</section>
 		</>
 	);
 }

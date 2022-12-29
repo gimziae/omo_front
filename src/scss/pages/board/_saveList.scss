@@ -1,0 +1,59 @@
+.saveList {
+    width: 100%;
+    .row {
+        width: 100%;
+        display: flex;
+        gap: 15px;
+        .savedPlace {
+            width: 200px;
+            border: 1px solid #ccc;
+            padding: 0.8em;
+            text-align: center;
+
+            .img {
+                width: 100%;
+                height: 200px;
+                overflow: hidden;
+                margin-bottom: 10px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            h5 {
+                font-size: 1.2em;
+            }
+        }
+        .add {
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: #555;
+
+                svg {
+                    width: 100px;
+                    height: 100px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: $green;
+                    transition: 0.3s;
+                    margin-bottom: 10px;
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+                h3 {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
