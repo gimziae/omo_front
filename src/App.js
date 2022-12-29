@@ -13,7 +13,7 @@ import UserBoard from "./pages/UserBoard";
 import Tour from "./pages/place/Tour";
 import Culture from "./pages/place/Culture";
 import Food from "./pages/place/Food";
-import DetailView from "./components/place/DetailView";
+import DetailView from "./pages/DetailView";
 
 function App() {
 	return (

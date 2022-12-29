@@ -12,7 +12,9 @@ export default function Card({ area, onSave, isSaved }) {
 			onClick={() => {
 				dispatch(save(area));
 			}}>
-			<Link to={`${area.contentid}`}>
+			<Link
+				to={`${area.contentid}`}
+				state={{ img: `${area.firstimage}`, addr: `${area.addr1}` }}>
 				<div className="image">
 					<img
 						src={
