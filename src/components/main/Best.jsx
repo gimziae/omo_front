@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export default function Best() {
 	return (
 		<section id="best">
-			<h3>오늘 이곳은 어때요?</h3>
+			<h3>🌉 오늘 이곳은 어때요?</h3>
 			<div className="moreContainer">
 				<div className="tourMore col-4">
 					<NavLink to="/tour">

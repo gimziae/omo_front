@@ -1,4 +1,4 @@
-import { FaSignOutAlt, FaSignInAlt } from "react-icons/fa";
+import { FaSignOutAlt, FaSignInAlt, FaUser } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { logout } from "../redux/modules/user";
@@ -21,13 +21,18 @@ export default function Header() {
 							<FaSignInAlt />
 						</NavLink>
 					) : (
-						<NavLink
-							to="/"
-							className="login"
-							onClick={() => dispatch(logout())}>
-							<span>Sign out</span>
-							<FaSignOutAlt />
-						</NavLink>
+						<div className="isLogin">
+							<NavLink to="/board" className="board">
+								<FaUser />
+							</NavLink>
+							<NavLink
+								to="/"
+								className="logout"
+								onClick={() => dispatch(logout())}>
+								<FaSignOutAlt />
+								<span>Sign out</span>
+							</NavLink>
+						</div>
 					)}
 				</div>
 			</header>

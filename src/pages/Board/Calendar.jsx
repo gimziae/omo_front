@@ -202,9 +202,13 @@ export default function Calendar() {
 	// 일정 수정하는 함수
 	async function modifySchedule(id) {
 		const modifyContents = {
-			title: modifyInputTitle.current?.value,
-			content: modifyInputContent.current?.value,
-			// date: "수정할 시간",
+			title: modifyInputTitle.current.value
+				? modifyInputTitle.current.value
+				: modifyInputTitle.value,
+			content: modifyInputContent.current.value
+				? modifyInputContent.current.value
+				: modifyInputContent.value,
+			// date: id.updateAt,
 			_id: id,
 		};
 		const modifyContentResponse = await fetch(scheduleURL, {
@@ -292,10 +296,11 @@ export default function Calendar() {
 
 						return (
 							<li key={index}>
-								<p className="date">
-									{year}년 {month}월 {day}일
-								</p>
 								<div className="contents">
+									{" "}
+									<p className="date">
+										{year}년 {month}월 {day}일
+									</p>
 									{modifyMode[index] ? (
 										<>
 											<input
@@ -309,10 +314,10 @@ export default function Calendar() {
 											/>
 										</>
 									) : (
-										<>
-											<h3>{item.title}</h3>
-											<p>{item.content}</p>
-										</>
+										<span>
+											<strong>{item.title}</strong>
+											{item.content}
+										</span>
 									)}
 								</div>
 
@@ -321,30 +326,32 @@ export default function Calendar() {
 										<>
 											{/* 뒤로가기 버튼 */}
 											<button className="back">
-												<RiArrowGoBackLine
+												<span
 													onClick={() => {
 														const copyArr = [
 															...modifyMode,
 														];
 														copyArr[index] = false;
 														setModifyMode(copyArr);
-													}}
-												/>
+													}}>
+													뒤로가기
+												</span>
 											</button>
 											{/* 수정 저장하기 버튼 */}
 											<button className="save">
-												<MdSaveAlt
+												<span
 													onClick={() =>
 														modifySchedule(item._id)
-													}
-												/>
+													}>
+													저장
+												</span>
 											</button>
 										</>
 									) : (
 										<>
 											{/* 수정모드로 가기 버튼 */}
 											<button className="modify">
-												<CiEdit
+												<span
 													onClick={() => {
 														const copyArr = [
 															...modifyMode,
@@ -352,16 +359,18 @@ export default function Calendar() {
 														copyArr[index] = true;
 
 														setModifyMode(copyArr);
-													}}
-												/>
+													}}>
+													수정
+												</span>
 											</button>
 											{/* 삭제하기 버튼 */}
 											<button className="delete">
-												<MdDeleteOutline
+												<span
 													onClick={() =>
 														deleteSchedule(item._id)
-													}
-												/>
+													}>
+													삭제
+												</span>
 											</button>
 										</>
 									)}

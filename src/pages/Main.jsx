@@ -5,9 +5,9 @@ import Footer from "../components/Footer";
 
 import Header from "../components/Header";
 import Best from "../components/main/Best";
+import Intro from "../components/main/Intro";
 
 import Plan from "../components/main/Plan";
-import Popular from "../components/main/Popular";
 
 export default function Main() {
 	const isLogin = useSelector((state) => state.user.isLogin);
@@ -18,8 +18,8 @@ export default function Main() {
 			<main>
 				<div className="mainWrap">
 					{/* plan 로그인 시에만 보이게 */}
-					{!isLogin ? null : <Plan />}
-					<Popular />
+					{!isLogin ? <Intro /> : <Plan />}
+
 					<Best />
 				</div>
 			</main>

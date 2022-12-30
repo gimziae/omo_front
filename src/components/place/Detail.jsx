@@ -16,10 +16,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import "swiper/css/navigation";
 
 // import required modules
-import { Pagination, Navigation, Mousewheel } from "swiper";
+import { Mousewheel } from "swiper";
 
 export default function Detail() {
 	const [data, setData] = useState([]);
@@ -73,6 +72,7 @@ export default function Detail() {
 			});
 	}, []);
 
+	// 북마크 저장
 	async function savePlace() {
 		const savePlaceURL = "http://localhost:4000/board/place";
 		const savePlaceResponse = await fetch(savePlaceURL, {
@@ -203,7 +203,7 @@ export default function Detail() {
 					</div>
 					<div className="placeImgMore">
 						<div className="inner">
-							<h2>사진 더 보기</h2>
+							<h2>📷 사진 더 보기</h2>
 							<hr />
 							<div className="imgMoreView">
 								{image === undefined ? (
@@ -214,13 +214,13 @@ export default function Detail() {
 										spaceBetween={30}
 										loop={true}
 										mousewheel={true}
-										// pagination={{
-										// 	clickable: true,
-										// }}
+										pagination={{
+											clickable: true,
+										}}
 										navigation={true}
 										modules={[
 											// Pagination,
-											Navigation,
+											// Navigation,
 											Mousewheel,
 										]}
 										className="mySwiper">

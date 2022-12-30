@@ -1,0 +1,42 @@
+#intro {
+    width: 100%;
+    padding: 3em 3em 2em;
+    text-align: center;
+    h2 {
+        font-weight: 600;
+        font-size: 4em;
+        color: #333;
+        margin-bottom: 20px;
+        span {
+            cursor: pointer;
+            &:hover {
+                transform: rotate(90deg);
+            }
+        }
+    }
+    .con {
+        text-align: center;
+        font-size: 1.6em;
+        letter-spacing: 1px;
+        span {
+            img {
+                width: 80px;
+                transform: translateY(-8px);
+            }
+        }
+        a {
+            font-size: 0.8em;
+            color: #999;
+            display: inline-block;
+            margin-top: 1em;
+            svg {
+                transition: 0.5s;
+            }
+            &:hover {
+                svg {
+                    transform: translateX(15px);
+                }
+            }
+        }
+    }
+}

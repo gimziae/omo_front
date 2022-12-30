@@ -20,12 +20,30 @@
     }
     .planList {
         width: 50%;
-        padding: 1.5em;
+        padding: 1.5em 2em;
         border: 1px solid #ccc;
         ul {
             width: 100%;
             li {
-                padding: 5px;
+                padding: 10px;
+                border-bottom: 1px solid #eee;
+                > .data {
+                    font-size: 0.8em;
+                    display: inline-block;
+                    color: #999;
+                    margin-bottom: 5px;
+                    margin-right: 10px;
+                }
+                > .title {
+                    text-indent: 10px;
+                    color: #777;
+                    > strong {
+                        color: #555;
+                        font-weight: 500;
+                        font-size: 1.2em;
+                        letter-spacing: 1px;
+                    }
+                }
             }
         }
         // board 이동 버튼
