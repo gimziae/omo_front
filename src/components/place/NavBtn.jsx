@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 const Nav = styled.nav`
+	margin-top: 1.5em;
 	ul {
 		display: flex;
 		justify-content: center;

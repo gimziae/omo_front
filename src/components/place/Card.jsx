@@ -19,7 +19,7 @@ export default function Card({ area, onSave, isSaved }) {
 					<img
 						src={
 							area.firstimage === ""
-								? "/images/profile.jpeg"
+								? "/images/noimg.png"
 								: area.firstimage
 						}
 						alt="관광이미지"

@@ -38,7 +38,6 @@ export default function SaveList() {
 						</Link>
 					</div>
 					{savedList.map((item, index) => {
-						console.log(item);
 						return (
 							<div className="savedPlace col-3" key={index}>
 								<div className="img">

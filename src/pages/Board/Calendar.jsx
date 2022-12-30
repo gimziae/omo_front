@@ -132,7 +132,6 @@ export default function Calendar() {
 		})
 			.then((res) => res.json())
 			.then((json) => {
-				console.log(json);
 				if (json.schedules) {
 					setSavedShceduleList(json.schedules);
 					const modifyModeArr = [];
@@ -153,7 +152,7 @@ export default function Calendar() {
 			title: inputTitle.current.value,
 			content: inputContent.current.value,
 		};
-		// console.log(inputDate.current.value);
+
 		if (todoInput.title !== "" && todoInput.content !== "") {
 			const saveTodoResponse = await fetch(scheduleURL, {
 				method: "POST",
@@ -165,9 +164,12 @@ export default function Calendar() {
 			});
 			if (saveTodoResponse.status === 201) {
 				const saveTodoResult = await saveTodoResponse.json();
-				console.log(saveTodoResult);
-				alert("일정 저장 완료");
-				setRender(!render);
+				if (saveTodoResult) {
+					alert("일정 저장 완료");
+					setRender(!render);
+					inputTitle.current.value = "";
+					inputContent.current.value = "";
+				}
 			}
 		} else {
 			alert("제목과 내용을 입력해 주세요.");
@@ -213,7 +215,7 @@ export default function Calendar() {
 			},
 			body: JSON.stringify(modifyContents),
 		});
-		console.log(modifyContentResponse);
+
 		if (modifyContentResponse.status === 201) {
 			alert("일정 수정 완료");
 
@@ -283,11 +285,15 @@ export default function Calendar() {
 			<div className="todoList">
 				<ul className="savedList">
 					{savedScheduleList.map((item, index) => {
-						console.log(item);
+						const year = item.date?.split("-")[0];
+						const month = item.date?.split("-")[1];
+						const day =
+							parseInt(item.date?.split("-")[2].substr(0, 2)) + 1;
+
 						return (
 							<li key={index}>
 								<p className="date">
-									{item.date?.substr(0, 10)}
+									{year}년 {month}월 {day}일
 								</p>
 								<div className="contents">
 									{modifyMode[index] ? (
@@ -313,8 +319,8 @@ export default function Calendar() {
 								<div className="btnWrap">
 									{modifyMode[index] ? (
 										<>
+											{/* 뒤로가기 버튼 */}
 											<button className="back">
-												{/* 뒤로가기 버튼 */}
 												<RiArrowGoBackLine
 													onClick={() => {
 														const copyArr = [
@@ -325,8 +331,8 @@ export default function Calendar() {
 													}}
 												/>
 											</button>
+											{/* 수정 저장하기 버튼 */}
 											<button className="save">
-												{/* 수정 저장하기 버튼 */}
 												<MdSaveAlt
 													onClick={() =>
 														modifySchedule(item._id)
@@ -336,24 +342,21 @@ export default function Calendar() {
 										</>
 									) : (
 										<>
+											{/* 수정모드로 가기 버튼 */}
 											<button className="modify">
-												{/* 수정모드로 가기 버튼 */}
 												<CiEdit
 													onClick={() => {
 														const copyArr = [
 															...modifyMode,
 														];
 														copyArr[index] = true;
-														console.log(
-															"copyArr",
-															copyArr
-														);
+
 														setModifyMode(copyArr);
 													}}
 												/>
 											</button>
+											{/* 삭제하기 버튼 */}
 											<button className="delete">
-												{/* 삭제하기 버튼 */}
 												<MdDeleteOutline
 													onClick={() =>
 														deleteSchedule(item._id)

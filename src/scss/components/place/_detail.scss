@@ -1,15 +1,15 @@
-.detailView {
+section.detailView {
   position: relative;
   padding: 2em 5em;
-  margin: 0 auto;
-
-  .sectionWrap {
+  // width: 100%;
+  height: 100%;
+  > .detailWrap {
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     .placeInfo {
       width: 100%;
-      height: 500px;
+
       position: relative;
       display: flex;
       justify-content: space-between;
@@ -17,7 +17,7 @@
 
       .placeImg {
         width: 50%;
-        height: 100%;
+        // height: 500px;
         padding: 2em;
         overflow: hidden;
 
@@ -34,7 +34,7 @@
         padding: 2em 1em;
         position: relative;
 
-        .inner {
+        > .inner {
           width: 100%;
           border: 1px solid #ccc;
           padding: 2em 2.5em;
@@ -89,10 +89,29 @@
     .placeImgMore {
       width: 100%;
       position: relative;
-      // border: 3px solid dodgerblue;
+
       > .inner {
         padding: 2em;
         width: 100%;
+        h2 {
+          font-size: 1.5em;
+          color: #777;
+        }
+        > .imgMoreView {
+          .mySwiper {
+            // padding: 0 3em;
+            .imgWrap {
+              width: 25%;
+              height: 200px;
+              overflow: hidden;
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+          }
+        }
       }
     }
   }

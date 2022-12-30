@@ -28,7 +28,7 @@ export default function Diary() {
 
 	const getValue = (e) => {
 		const { name, value } = e.target;
-		console.log(name, value);
+
 		setMovieContent({
 			...movieContent,
 			[name]: value,
@@ -41,8 +41,8 @@ export default function Diary() {
 				<h1>{localStorage.getItem("name")}'s DIARY</h1>
 				<div className="movie_container">
 					<h2>작성된 글</h2>
-					{viewContent.map((element) => (
-						<div className="writeContent">
+					{viewContent.map((element, index) => (
+						<div className="writeContent" key={index}>
 							<h2>{element.title}</h2>
 							<div>{HtmlReactParser(element.content)}</div>
 							{/* <div>{element.content}</div> */}
@@ -68,27 +68,18 @@ export default function Diary() {
 					<CKEditor
 						editor={ClassicEditor}
 						data=""
-						onReady={(editor) => {
-							// console.log("Editor is ready to use!", editor);
-						}}
+						onReady={(editor) => {}}
 						onChange={(event, editor) => {
 							const data = editor.getData();
-							// console.log({ event, editor, data });
+
 							setMovieContent({
 								...movieContent,
 								content: data,
 							});
-							console.log("??", movieContent);
 						}}
-						onBlur={(event, editor) => {
-							console.log("Blur.", editor);
-						}}
-						onFocus={(event, editor) => {
-							console.log("Focus.", editor);
-						}}
+						onBlur={(event, editor) => {}}
+						onFocus={(event, editor) => {}}
 					/>
-
-					{/* <textarea className="text_area" placeholder="내용"></textarea> */}
 				</div>
 
 				<button

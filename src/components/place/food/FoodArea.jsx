@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "../Card";
 // import { useDispatch } from "react-redux";
 // import { save } from "../../../redux/modules/area";
+import { FaMousePointer } from "react-icons/fa";
 
 // 관광정보
 const key =
@@ -23,7 +24,6 @@ export default function FoodArea() {
 				return res.json();
 			})
 			.then((json) => {
-				// console.log(json.response.body.items.item);
 				setData(json.response.body.items.item);
 			});
 	}, []);
@@ -44,6 +44,9 @@ export default function FoodArea() {
 					<li onClick={() => setQuery("서초")}>서초구</li>
 				</ul>
 			</div>
+			<p className="clickInfo">
+				<FaMousePointer /> 클릭하면 상세정보를 보실 수 있습니다.
+			</p>
 			<div className="contents">
 				{data
 					.filter((data) => data.addr1.toLowerCase().includes(query))

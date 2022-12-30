@@ -15,6 +15,7 @@ import Culture from "./pages/place/Culture";
 import Food from "./pages/place/Food";
 import DetailView from "./pages/DetailView";
 import Diary from "./pages/board/Diary";
+import Place from "./pages/Place";
 
 function App() {
 	return (
@@ -30,6 +31,8 @@ function App() {
 				{/* 회원페이지 */}
 				<Route path="/board" element={<UserBoard />} />
 				<Route path="/diary" element={<Diary />} />
+
+				<Route path="/place" element={<Place />} />
 
 				{/* 가볼만한 곳 */}
 				<Route path="/tour" element={<Tour />} />

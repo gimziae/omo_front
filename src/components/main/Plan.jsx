@@ -25,7 +25,7 @@ export default function Plan() {
 				}
 			});
 	}, []);
-	console.log(savedList);
+
 	return (
 		<section id="plan">
 			<div className="contents">
@@ -37,21 +37,31 @@ export default function Plan() {
 				</p>
 			</div>
 			<div className="planList">
-				{/* <p>일정 불러오기</p> */}
 				<ul>
+					{/* 저장된 일정 불러오기 */}
 					{savedList.map((item, index) => {
-						return (
-							<li key={index}>
-								<p>{item.title}</p>
-								<p>{item.content}</p>
+						const nowMonth = new Date().getMonth() + 1;
+						const nowDate = new Date().getDate();
+						console.log(new Date().getMonth() + 1);
+						console.log(new Date().getDate());
 
-								<span>
-									{item.createdAt.split("-")[0]}년{" "}
-									{item.createdAt.split("-")[1]}월{" "}
-									{item.createdAt.substr(8, 2)}일
-								</span>
-							</li>
-						);
+						return index < 5 &&
+							item.date.split("-")[1] >= nowMonth &&
+							item.date.substr(8, 2) > nowDate ? (
+							<>
+								<li key={item._id}>
+									<span>
+										{item.date.split("-")[0]}년{" "}
+										{item.date.split("-")[1]}월{" "}
+										{item.date.substr(8, 2)}일
+									</span>
+									<p>
+										{item.title} - {item.content}
+									</p>
+								</li>
+								<hr />
+							</>
+						) : null;
 					})}
 				</ul>
 

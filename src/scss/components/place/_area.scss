@@ -1,43 +1,51 @@
 section.area {
-  // border: 1px solid red;
+  padding: 5em 2em;
   h1 {
+    font-size: 2em;
     color: $purple;
-  }
-
-  h1 {
-    margin-top: 100px;
-    font-size: 28px;
+    text-align: center;
   }
 
   .tabMenu {
     width: 100%;
-    margin: 50px 0;
+    margin: 30px 0;
     padding: 0;
     ul {
       display: flex;
 
       li {
-        width: calc(100% / 5);
-        margin: 0 15px;
-        // background-color: $purple;
+        cursor: pointer;
+        width: calc(100% / 6);
         opacity: 0.7;
         padding: 10px 0;
-        border-radius: 25px;
-        font-size: 20px;
-        font-weight: bold;
-        color: $white;
+        font-size: 1.5em;
+        letter-spacing: 1px;
+        color: #777;
         text-align: center;
         transition: 0.2s;
+        border-right: 1px solid #c7c7c7;
+        &:last-child {
+          border: none;
+        }
         &:hover {
           opacity: 1;
         }
       }
     }
   }
+  .clickInfo {
+    color: #777;
+    text-indent: 1em;
+
+    svg {
+      color: $purple;
+    }
+  }
+
   .contents {
     display: flex;
     justify-content: center;
-    gap: 50px;
     flex-wrap: wrap;
+    gap: 40px;
   }
 }

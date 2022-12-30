@@ -54,7 +54,6 @@ export default function Login() {
 		} else {
 			alert("아이디 또는 비밀번호를 입력해 주세요.");
 		}
-		console.log(loginInfo);
 	}
 
 	return (

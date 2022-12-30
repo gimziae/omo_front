@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Card from "../Card";
+import { FaMousePointer } from "react-icons/fa";
 
 // 관광정보
 const key =
@@ -24,13 +25,9 @@ export default function TourArea() {
 				return res.json();
 			})
 			.then((json) => {
-				// console.log(json.response.body.items.item);
 				setData(json.response.body.items.item);
 			});
 	}, []);
-
-	// console.log(save);
-	// console.log(savedList);
 
 	return (
 		<section className="area tour">
@@ -40,7 +37,12 @@ export default function TourArea() {
 
 			<div className="tabMenu">
 				<ul className="tabMenu">
-					<li onClick={() => setQuery("")}>전체</li>
+					<li
+						onClick={() => {
+							setQuery("");
+						}}>
+						전체
+					</li>
 					<li onClick={() => setQuery("종로")}>종로구</li>
 					<li onClick={() => setQuery("강남")}>강남구</li>
 					<li onClick={() => setQuery("중구")}>중구</li>
@@ -48,6 +50,9 @@ export default function TourArea() {
 					<li onClick={() => setQuery("서초")}>서초구</li>
 				</ul>
 			</div>
+			<p className="clickInfo">
+				<FaMousePointer /> 클릭하면 상세정보를 보실 수 있습니다.
+			</p>
 			<div className="contents">
 				{data
 					.filter((data) => data.addr1.toLowerCase().includes(query))
